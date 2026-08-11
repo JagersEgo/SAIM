@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dye4lhym77lxj"]
+
+[ext_resource type="Script" uid="uid://ueysn7ekusja" path="res://entities/components/movement/humanoid/humanoid_movement.gd" id="1_g1xms"]
+
+[node name="humanoid_movement" type="Node3D" unique_id=599138171]
+script = ExtResource("1_g1xms")

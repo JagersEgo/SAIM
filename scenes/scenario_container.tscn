@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dt7xnth4tifce"]
+
+[sub_resource type="GDScript" id="GDScript_v8m8g"]
+script/source = "extends Node2D
+
+func attach_scenario(scene: PackedScene):
+	self.add_child(scene.instantiate())
+"
+
+[node name="ScenarioContainer" type="Node2D" unique_id=876917443]
+script = SubResource("GDScript_v8m8g")

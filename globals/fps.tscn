@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cug5f02uj0la6"]
+
+[ext_resource type="Script" uid="uid://dkc035tpndt3f" path="res://globals/fps.gd" id="1_sglcy"]
+
+[node name="Fps" type="Node2D" unique_id=593541087]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+script = ExtResource("1_sglcy")

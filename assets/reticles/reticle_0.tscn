@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://coqpusufa8a6k"]
+
+[sub_resource type="GDScript" id="GDScript_10f85"]
+script/source = "extends CenterContainer
+
+const PATH = \"crosshair.ini\"
+
+@onready var fallback_crosshair: Polygon2D = $dot
+@onready var crosshair: Sprite2D = $crosshair
+
+const SETTINGS := [
+	{
+		\"section\": \"crosshair\",
+		\"key\": \"scale\",
+		\"prop\": \"crosshair_scale\",
+		\"type\": \"float\",
+		\"default\": 1.0,
+	},
+	{
+		\"section\": \"crosshair\",
+		\"key\": \"crosshair_file\",
+		\"prop\": \"crosshair_path\",
+		\"type\": \"string\",
+		\"default\": \"./crosshairs/0_snowi_sharpdotx.png\",
+	},
+	{
+		\"section\": \"crosshair\",
+		\"key\": \"red\",
+		\"prop\": \"red\",
+		\"type\": \"int\",
+		\"default\": 255,
+	},
+	{
+		\"section\": \"crosshair\",
+		\"key\": \"green\",
+		\"prop\": \"green\",
+		\"type\": \"int\",
+		\"default\": 255,
+	},
+	{
+		\"section\": \"crosshair\",
+		\"key\": \"blue\",
+		\"prop\": \"blue\",
+		\"type\": \"int\",
+		\"default\": 255,
+	},
+]
+
+var crosshair_scale : float
+var red : int
+var green : int
+var blue : int
+var crosshair_path : String
+
+func _ready() -> void:
+	ConfigManager.load_config(PATH, SETTINGS, self)
+	
+	self.modulate.r8 = red
+	self.modulate.g8 = green
+	self.modulate.b8 = blue
+	
+	self.scale.x = crosshair_scale
+	self.scale.y = crosshair_scale
+	
+	var image := ConfigManager.load_png(crosshair_path)
+	if image == null:
+		crosshair.visible = false
+		fallback_crosshair.visible = true
+		return
+
+	var texture := ImageTexture.new()
+	texture.set_image(image)
+	if texture == null:
+		crosshair.visible = false
+		fallback_crosshair.visible = true
+		return
+
+	crosshair.texture = texture
+	fallback_crosshair.queue_free()
+
+
+
+func query_config() -> Array[Dictionary]:
+	return SETTINGS
+"
+
+[node name="Reticle" type="CenterContainer" unique_id=146814222]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_10f85")
+
+[node name="dot" type="Polygon2D" parent="." unique_id=1179643546]
+visible = false
+polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)
+
+[node name="crosshair" type="Sprite2D" parent="." unique_id=930169835]
+texture_filter = 1

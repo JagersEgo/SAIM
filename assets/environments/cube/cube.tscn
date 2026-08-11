@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c24l0mbjy02k5"]
+
+[ext_resource type="PackedScene" uid="uid://dg2xvtmf0nbud" path="res://assets/environments/cube/cube.glb" id="1_lkd8b"]
+[ext_resource type="Texture2D" uid="uid://c7pxbbjqaai3h" path="res://assets/textures/Dark/texture_01.png" id="2_s3mat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsrkp"]
+cull_mode = 1
+depth_draw_mode = 2
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_texture = ExtResource("2_s3mat")
+disable_receive_shadows = true
+
+[node name="cube" unique_id=1962200296 instance=ExtResource("1_lkd8b")]
+
+[node name="Cube" parent="." index="0" unique_id=957167033]
+material_override = SubResource("StandardMaterial3D_wsrkp")

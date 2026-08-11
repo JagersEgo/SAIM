@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bwx2nwm0wgm1s"]
+
+[ext_resource type="Texture2D" uid="uid://c7pxbbjqaai3h" path="res://assets/textures/Dark/texture_01.png" id="1_0xkp7"]
+
+[resource]
+cull_mode = 1
+depth_draw_mode = 2
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("1_0xkp7")
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 2
+disable_receive_shadows = true

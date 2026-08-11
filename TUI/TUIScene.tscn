@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c3ony4t0dcvev"]
+
+[ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_5r7ok"]
+[ext_resource type="Script" uid="uid://mey3v3ivr2uw" path="res://TUI/tui_button.gd" id="2_eme7j"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="3_y42c3"]
+
+[node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
+script = ExtResource("1_5r7ok")
+nodes = [NodePath("TuiComment"), NodePath("TuiComment2"), NodePath("TuiButton"), NodePath("TuiButton2"), NodePath("TuiButton3"), NodePath("TuiButton4")]
+
+[node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
+script = ExtResource("3_y42c3")
+text = Array[String]([" [ Simple Aim v0.1 ]────────────[F1] Help [F8] Exit"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiComment2" type="Node2D" parent="." unique_id=1837668384]
+script = ExtResource("3_y42c3")
+text = Array[String](["          _/_/_/    _/_/    _/_/_/  _/      _/", "       _/        _/    _/    _/    _/_/  _/_/", "        _/_/    _/_/_/_/    _/    _/  _/  _/", "           _/  _/    _/    _/    _/      _/", "    _/_/_/    _/    _/  _/_/_/  _/      _/", ""])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiButton" type="Node2D" parent="." unique_id=538507623]
+script = ExtResource("2_eme7j")
+text = "Start"
+marker = "1"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton2" type="Node2D" parent="." unique_id=1622699106]
+script = ExtResource("2_eme7j")
+text = "Continue"
+marker = "2"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton3" type="Node2D" parent="." unique_id=599160022]
+script = ExtResource("2_eme7j")
+text = "Settings"
+marker = "3"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton4" type="Node2D" parent="." unique_id=1996432353]
+script = ExtResource("2_eme7j")
+text = "Quit"
+marker = "4"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"

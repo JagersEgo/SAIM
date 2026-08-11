@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://t8it4cv0uscd"]
+
+[ext_resource type="Script" uid="uid://ca07fnxf3r5ri" path="res://entities/components/healthy/boxes/hittercast.gd" id="1_0sj3m"]
+
+[node name="hittercast" type="RayCast3D" unique_id=219731890]
+target_position = Vector3(0, 0, 25)
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+debug_shape_thickness = 4
+script = ExtResource("1_0sj3m")

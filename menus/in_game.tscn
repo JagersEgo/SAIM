@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cfiu5tli0l3el"]
+
+[ext_resource type="Script" uid="uid://dpc5d0dh27tew" path="res://menus/in_game.gd" id="1_u85k0"]
+[ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_ufa1r"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_u85k0"]
+[ext_resource type="PackedScene" uid="uid://36i82iib7tud" path="res://TUI/TUICentreButton.tscn" id="4_u85k0"]
+[ext_resource type="PackedScene" uid="uid://dx3gp77rn3rqs" path="res://TUI/TUIConfigDisplay.tscn" id="5_ljp4j"]
+
+[node name="in_game" type="Node2D" unique_id=778909359 node_paths=PackedStringArray("pause_menu")]
+script = ExtResource("1_u85k0")
+pause_menu = NodePath("TuiScene")
+
+[node name="TuiScene" type="Node2D" parent="." unique_id=277248460 node_paths=PackedStringArray("nodes")]
+z_index = 100
+script = ExtResource("1_ufa1r")
+nodes = [NodePath("TuiComment"), NodePath("TuiCentreButton"), NodePath("TuiCentreButton2"), NodePath("TuiCentreButton3"), NodePath("TuiComment2"), NodePath("TuiConfigDisplay"), NodePath("TuiCentreButton4")]
+closable = false
+
+[node name="TuiComment" type="Node2D" parent="TuiScene" unique_id=410913873]
+script = ExtResource("2_u85k0")
+text = Array[String](["                 [ Scenario Paused ]"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiCentreButton" parent="TuiScene" unique_id=1169410865 instance=ExtResource("4_u85k0")]
+text = "Resume"
+
+[node name="TuiCentreButton2" parent="TuiScene" unique_id=1127065136 instance=ExtResource("4_u85k0")]
+text = "Exit"
+
+[node name="TuiCentreButton3" parent="TuiScene" unique_id=1882399935 instance=ExtResource("4_u85k0")]
+text = "Config"
+
+[node name="TuiCentreButton4" parent="TuiScene" unique_id=1130545201 instance=ExtResource("4_u85k0")]
+text = "Close"
+
+[node name="TuiComment2" type="Node2D" parent="TuiScene" unique_id=1367519484]
+script = ExtResource("2_u85k0")
+text = Array[String](["Temp display:"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiConfigDisplay" parent="TuiScene" unique_id=933823389 instance=ExtResource("5_ljp4j")]
+
+[connection signal="pressed" from="TuiScene/TuiCentreButton" to="." method="_on_tui_button_5_pressed"]
+[connection signal="pressed" from="TuiScene/TuiCentreButton2" to="." method="_on_tui_button_6_pressed"]
+[connection signal="pressed" from="TuiScene/TuiCentreButton4" to="." method="_on_tui_centre_button_4_pressed"]

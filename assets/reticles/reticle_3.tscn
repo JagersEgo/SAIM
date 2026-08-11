@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b851f1nku8p1b"]
+
+[ext_resource type="Texture2D" uid="uid://b4rmi5eq1v1c" path="res://assets/reticles/destiny_hitmarker.png" id="1_4hs60"]
+
+[node name="Reticle3" type="Control" unique_id=291255535]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+scale = Vector2(0.195, 0.195)
+
+[node name="DestinyHitmarker" type="TextureRect" parent="." unique_id=1648298642]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -109.0
+offset_right = 16.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 97)
+texture = ExtResource("1_4hs60")
+
+[node name="DestinyHitmarker4" type="TextureRect" parent="." unique_id=694604455]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 13.0
+offset_right = 16.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 97)
+texture = ExtResource("1_4hs60")
+flip_v = true
+
+[node name="DestinyHitmarker2" type="TextureRect" parent="." unique_id=647277165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -97.0
+offset_right = 28.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(16, 97)
+texture = ExtResource("1_4hs60")
+
+[node name="DestinyHitmarker3" type="TextureRect" parent="." unique_id=2103312747]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -97.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71239
+pivot_offset = Vector2(16, 97)
+texture = ExtResource("1_4hs60")

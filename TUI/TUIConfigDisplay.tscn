@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dx3gp77rn3rqs"]
+
+[ext_resource type="Script" uid="uid://dxgs7y57co1qd" path="res://TUI/tui_config_display.gd" id="1_ujhqp"]
+
+[node name="TuiConfigDisplay" type="Node2D" unique_id=1169410865]
+script = ExtResource("1_ujhqp")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cwvh6tbc6rcek"]
+
+[ext_resource type="PackedScene" uid="uid://coqpusufa8a6k" path="res://assets/reticles/reticle_0.tscn" id="1_xmswo"]
+[ext_resource type="PackedScene" uid="uid://bradddvj87ylm" path="res://hud/kill_feedback.tscn" id="2_4d6w6"]
+
+[node name="ui" type="CanvasLayer" unique_id=1383085070]
+
+[node name="Reticle" parent="." unique_id=1499133555 instance=ExtResource("1_xmswo")]
+
+[node name="Control" parent="." unique_id=937111291 instance=ExtResource("2_4d6w6")]
+mouse_filter = 2

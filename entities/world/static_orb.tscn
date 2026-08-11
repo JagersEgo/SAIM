@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b4xugmntrrt8f"]
+
+[ext_resource type="PackedScene" uid="uid://hcqoethrmted" path="res://entities/world/target.tscn" id="1_i740f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbfep"]
+shading_mode = 0
+diffuse_mode = 3
+disable_ambient_light = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i740f"]
+material = SubResource("StandardMaterial3D_jbfep")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i740f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_05mmv"]
+
+[node name="RigidBody3D" unique_id=1949827014 instance=ExtResource("1_i740f")]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=321942722]
+mesh = SubResource("SphereMesh_i740f")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1784844226]
+shape = SubResource("SphereShape3D_i740f")
+
+[node name="CollisionShape3D2" parent="target" parent_id_path=PackedInt32Array(535733758) index="0" unique_id=1732754611]
+shape = SubResource("SphereShape3D_05mmv")

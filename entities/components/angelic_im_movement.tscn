@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://crwpt23mbdkey"]
+
+[ext_resource type="Script" uid="uid://dii5enyyrtyca" path="res://entities/components/angelic_im_movement.gd" id="1_u4amd"]
+
+[node name="angelic_im_movement" type="Node3D" unique_id=942452414]
+script = ExtResource("1_u4amd")

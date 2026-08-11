@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://clkbju84ug0f4"]
+
+[ext_resource type="Script" uid="uid://ceh00xonmbhrl" path="res://entities/spawner/orb_mover.gd" id="1_xho55"]
+
+[node name="orb_mover" type="Node3D" unique_id=889274660]
+physics_interpolation_mode = 2
+script = ExtResource("1_xho55")

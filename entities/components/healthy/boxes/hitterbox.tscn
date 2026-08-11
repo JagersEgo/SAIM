@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cc4ykf5ot016e"]
+
+[ext_resource type="Script" uid="uid://b68mtrmtcmt2k" path="res://entities/components/healthy/boxes/hitterbox.gd" id="1_7qwgc"]
+
+[node name="hitter_box" type="Area3D" unique_id=1317200324]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_7qwgc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

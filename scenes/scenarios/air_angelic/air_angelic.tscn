@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ckruqji2mk0s5"]
+
+[ext_resource type="PackedScene" uid="uid://dwlxyxmvc4p5n" path="res://entities/player/premade/player_lightgun.tscn" id="1_gvyyq"]
+[ext_resource type="Script" uid="uid://dkbt4mn4j2pqw" path="res://scenes/scenarios/placeholder_scenario.gd" id="1_xkddd"]
+[ext_resource type="PackedScene" uid="uid://barue46j3r0kx" path="res://entities/world/angelic.tscn" id="2_xgydg"]
+[ext_resource type="PackedScene" uid="uid://c24l0mbjy02k5" path="res://assets/environments/cube/cube.tscn" id="4_ylvwm"]
+
+[node name="air_angelic" type="Node3D" unique_id=1543844264]
+script = ExtResource("1_xkddd")
+
+[node name="Player" parent="." unique_id=17204238 instance=ExtResource("1_gvyyq")]
+
+[node name="target" parent="." unique_id=371810575 instance=ExtResource("2_xgydg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="cube2" parent="." unique_id=773662532 instance=ExtResource("4_ylvwm")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)

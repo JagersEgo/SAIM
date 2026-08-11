@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://0i4nqvry6fxg"]
+
+[ext_resource type="Script" uid="uid://tyypa2rncikl" path="res://entities/components/being.gd" id="1_7vm1c"]
+
+[node name="Being" type="CharacterBody3D" unique_id=1459620317]
+script = ExtResource("1_7vm1c")

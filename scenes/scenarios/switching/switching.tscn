@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ddojl0ijmsaoe"]
+
+[ext_resource type="PackedScene" uid="uid://dwlxyxmvc4p5n" path="res://entities/player/premade/player_lightgun.tscn" id="1_xmbhs"]
+[ext_resource type="Script" uid="uid://bc7vlv8ojxmdq" path="res://scenes/scenarios/switching/switching.gd" id="1_yucyv"]
+[ext_resource type="PackedScene" uid="uid://c24l0mbjy02k5" path="res://assets/environments/cube/cube.tscn" id="2_ck4tw"]
+[ext_resource type="PackedScene" uid="uid://clkbju84ug0f4" path="res://entities/spawner/orb_mover.tscn" id="3_nm2wd"]
+
+[node name="switching" type="Node3D" unique_id=1791759826]
+script = ExtResource("1_yucyv")
+
+[node name="Player" parent="." unique_id=1710630586 instance=ExtResource("1_xmbhs")]
+
+[node name="cube2" parent="." unique_id=531521811 instance=ExtResource("2_ck4tw")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="orb_mover" parent="." unique_id=854024620 instance=ExtResource("3_nm2wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+spawn_variance = Vector3(35, 35, 0)
+bounds = Vector3(40, 40, 0)
+SPEED = 0.06

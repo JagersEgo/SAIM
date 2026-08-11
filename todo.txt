@@ -1,0 +1,10 @@
+Change pause menu config to be in submenu
+Make config display show current values
+
+allow loading of different config values per scenario
+
+add accuracy counter in game
+
+add hit sound customisation
+
+add target colour customisation

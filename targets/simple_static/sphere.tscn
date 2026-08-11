@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cka2upwo2wfkd"]
+
+[ext_resource type="Script" uid="uid://7daiqylkn7kh" path="res://targets/simple_static/sphere.gd" id="1_nmefi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrh27"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nrh27"]
+material = SubResource("StandardMaterial3D_nrh27")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nrh27"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=643021515]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_nmefi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300492825]
+mesh = SubResource("SphereMesh_nrh27")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=301503972]
+shape = SubResource("SphereShape3D_nrh27")

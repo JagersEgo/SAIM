@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bjba2v1kmuux"]
+
+[ext_resource type="Script" uid="uid://dn1g3dy8pncdg" path="res://TUI/tui_container.gd" id="1_c6dsi"]
+[ext_resource type="PackedScene" uid="uid://bwf32dy62t2hw" path="res://menus/main_menu.tscn" id="2_g1ynm"]
+
+[node name="TUIContainer" type="Node2D" unique_id=1465862386]
+script = ExtResource("1_c6dsi")
+metadata/_custom_type_script = "uid://dn1g3dy8pncdg"
+
+[node name="TuiScene" parent="." unique_id=318775932 node_paths=PackedStringArray("container") instance=ExtResource("2_g1ynm")]
+container = NodePath("..")
+
+[connection signal="tree_exiting" from="TuiScene" to="." method="_on_tui_scene_tree_exiting"]

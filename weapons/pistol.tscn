@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ce6yp07aub46d"]
+
+[ext_resource type="Script" uid="uid://bwiicnb820ywh" path="res://weapons/pistol.gd" id="1_es75o"]
+[ext_resource type="PackedScene" uid="uid://cw0e46lfop2ug" path="res://entities/components/healthy/boxes/hitter.tscn" id="2_14xyu"]
+[ext_resource type="Script" uid="uid://ca07fnxf3r5ri" path="res://entities/components/healthy/boxes/hittercast.gd" id="3_14xyu"]
+
+[node name="gun" type="Node3D" unique_id=1491820776]
+script = ExtResource("1_es75o")
+
+[node name="hitter_base" parent="." unique_id=538710568 instance=ExtResource("2_14xyu")]
+
+[node name="HitterCast" type="RayCast3D" parent="hitter_base" unique_id=1350646446 node_paths=PackedStringArray("hitter")]
+target_position = Vector3(0, 0, -100)
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_14xyu")
+hitter = NodePath("..")
+metadata/_custom_type_script = "uid://ca07fnxf3r5ri"
+
+[connection signal="shoot" from="." to="hitter_base/HitterCast" method="cast"]
+[connection signal="hit" from="hitter_base" to="." method="hit"]
+[connection signal="hurt" from="hitter_base" to="." method="hurt"]
+[connection signal="kill" from="hitter_base" to="." method="kill"]

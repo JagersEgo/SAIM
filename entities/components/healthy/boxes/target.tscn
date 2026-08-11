@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cilv2m1l3pe30"]
+
+[ext_resource type="Script" uid="uid://dltmdaxtaoqs5" path="res://entities/components/healthy/boxes/target.gd" id="1_jiovk"]
+
+[node name="target" type="Area3D" unique_id=395276038]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_jiovk")

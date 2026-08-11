@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b2awvi0ukbdeh"]
+
+[ext_resource type="PackedScene" uid="uid://bg7vi8v3s5hpa" path="res://entities/player/base/player.tscn" id="1_2gaci"]
+[ext_resource type="PackedScene" uid="uid://ce6yp07aub46d" path="res://weapons/pistol.tscn" id="2_e7eqx"]
+
+[node name="Player" unique_id=1374910863 instance=ExtResource("1_2gaci")]
+
+[node name="gun" parent="head" parent_id_path=PackedInt32Array(211639828) index="1" unique_id=1401716371 instance=ExtResource("2_e7eqx")]
+
+[node name="ui" parent="." index="7" unique_id=134708247]
+layer = -100
+
+[connection signal="got_a_hit" from="head/gun" to="StatTrack" method="add_hit"]
+[connection signal="got_kill" from="head/gun" to="StatTrack" method="add_kill"]
+[connection signal="got_kill" from="head/gun" to="ui/Control" method="on_kill"]
+[connection signal="shoot" from="head/gun" to="StatTrack" method="add_shot"]
+[connection signal="primary_jp" from="player_input_manager" to="head/gun" method="try_shoot"]
+
+[editable path="ui"]

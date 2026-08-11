@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cwaymf3a37mby"]
+
+[sub_resource type="GDScript" id="GDScript_14kxw"]
+script/source = "extends Node
+
+#nodes
+@export_group(\"Nodes\")
+
+#Character root node.
+@export var character : CharacterBody3D
+
+#Head node.
+@export var head : Node3D
+
+#Settings.
+@export_group(\"Settings\")
+
+#Mouse settings.
+@export_subgroup(\"Mouse settings\")
+
+#mouse sensitivity.
+#@export_range(1, 100, 1) var mouse_sensitivity: int = 50
+#var mouse_sensitivity: float = Config.sensitivity
+
+##pitch clamp settings.
+@export_subgroup(\"Clamp settings\")
+
+##max pitch in degrees.
+@export var max_pitch : float = 89
+
+##min pitch in degrees.
+@export var min_pitch : float = -89
+
+
+func _ready():
+	Input.set_use_accumulated_input(true)
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _input(event)->void:
+	if event is InputEventMouseMotion:
+		mouse_aim_look(event)
+
+
+func mouse_aim_look(event: InputEventMouseMotion)-> void:
+	var motion = event.screen_relative
+	
+	const OVERWATCH_RADIANS_PER_COUNT := 0.0066
+	
+	motion *= Config.sensitivity
+	motion *= OVERWATCH_RADIANS_PER_COUNT
+	
+	add_yaw(motion.x)
+	add_pitch(motion.y)
+	clamp_pitch()
+
+#Rotates the character around the local Y axis by a given amount (In degrees) to achieve yaw.
+func add_yaw(amount)->void:
+	character.rotate_object_local(Vector3.DOWN, deg_to_rad(amount))
+	#character.orthonormalize()
+
+#Rotates the head around the local x axis by a given amount (In degrees) to achieve pitch.
+func add_pitch(amount)->void:
+	head.rotate_object_local(Vector3.LEFT, deg_to_rad(amount))
+	#head.orthonormalize()
+
+
+#Clamps the pitch between min_pitch and max_pitch.
+func clamp_pitch()->void:
+	if head.rotation.x > deg_to_rad(min_pitch) and head.rotation.x < deg_to_rad(max_pitch):
+		return
+	
+	head.rotation.x = clamp(head.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+	#head.orthonormalize()
+"
+
+[node name="mouse_look" type="Node" unique_id=1541953346]
+process_priority = -100
+process_physics_priority = -100
+script = SubResource("GDScript_14kxw")

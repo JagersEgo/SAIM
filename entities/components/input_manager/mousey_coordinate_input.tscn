@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bu2vn2cpwx67u"]
+
+[ext_resource type="Script" uid="uid://dntlhp828xy1g" path="res://entities/components/input_manager/mousey_coordinate_input.gd" id="1_cm743"]
+
+[node name="mousey_coordinate_input" type="Node3D" unique_id=721220175]
+script = ExtResource("1_cm743")

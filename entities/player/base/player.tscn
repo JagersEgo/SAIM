@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bg7vi8v3s5hpa"]
+
+[ext_resource type="Script" uid="uid://pulj2bea7f70" path="res://entities/player/base/player.gd" id="1_qiwj3"]
+[ext_resource type="PackedScene" uid="uid://cilv2m1l3pe30" path="res://entities/components/healthy/boxes/target.tscn" id="1_symyc"]
+[ext_resource type="PackedScene" uid="uid://cwaymf3a37mby" path="res://entities/components/input_manager/mouse_look.tscn" id="2_sglur"]
+[ext_resource type="PackedScene" uid="uid://do61jppom6ymn" path="res://entities/components/input_manager/player_input_manager.tscn" id="3_bls4j"]
+[ext_resource type="Script" uid="uid://bmsbbfvwv74or" path="res://entities/player/base/stat_track.gd" id="3_pf4k0"]
+[ext_resource type="PackedScene" uid="uid://cwvh6tbc6rcek" path="res://hud/hud.tscn" id="7_qiwj3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bls4j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bls4j"]
+
+[node name="Player" type="CharacterBody3D" unique_id=944384999]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource("1_qiwj3")
+
+[node name="target" parent="." unique_id=1147459003 instance=ExtResource("1_symyc")]
+
+[node name="head" type="Node3D" parent="." unique_id=211639828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=682032988]
+current = true
+fov = 103.0
+size = 8.607
+
+[node name="StatTrack" type="Node2D" parent="." unique_id=983130719]
+script = ExtResource("3_pf4k0")
+
+[node name="mouse_look" parent="." unique_id=604038707 node_paths=PackedStringArray("character", "head") instance=ExtResource("2_sglur")]
+character = NodePath("..")
+head = NodePath("../head")
+
+[node name="player_input_manager" parent="." unique_id=780875884 instance=ExtResource("3_bls4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1502558979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bls4j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1318884179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_bls4j")
+skeleton = NodePath("../head/Camera3D")
+
+[node name="ui" parent="." unique_id=134708247 instance=ExtResource("7_qiwj3")]
+layer = 0
+
+[editable path="ui"]

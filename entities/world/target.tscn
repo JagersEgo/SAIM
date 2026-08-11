@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://hcqoethrmted"]
+
+[ext_resource type="PackedScene" uid="uid://cilv2m1l3pe30" path="res://entities/components/healthy/boxes/target.tscn" id="1_e2h7m"]
+[ext_resource type="Script" uid="uid://b8gogxwl41k44" path="res://entities/world/target.gd" id="1_rkc6w"]
+[ext_resource type="Material" uid="uid://do5ug6qjk5fyk" path="res://materials/target/01_basic.tres" id="2_lqn3c"]
+[ext_resource type="PackedScene" uid="uid://c0ff1fhjw6mcp" path="res://entities/components/healthy/health.tscn" id="2_rkc6w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_twixa"]
+material = ExtResource("2_lqn3c")
+size = Vector3(1, 2, 1)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0k0rf"]
+size = Vector3(1, 1.89551, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycj2s"]
+size = Vector3(1, 2, 1)
+
+[node name="target" type="RigidBody3D" unique_id=1019366773]
+script = ExtResource("1_rkc6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=321942722]
+mesh = SubResource("BoxMesh_twixa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1784844226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0209961, 0)
+shape = SubResource("BoxShape3D_0k0rf")
+disabled = true
+
+[node name="target" parent="." unique_id=535733758 instance=ExtResource("1_e2h7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62991, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="target" unique_id=1732754611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60891, 0)
+shape = SubResource("BoxShape3D_ycj2s")
+debug_color = Color(0, 0.6, 1, 1)
+
+[node name="Health" parent="." unique_id=3196332 instance=ExtResource("2_rkc6w")]
+
+[connection signal="got_hit" from="target" to="Health" method="damage"]
+[connection signal="died" from="Health" to="." method="on_killed"]

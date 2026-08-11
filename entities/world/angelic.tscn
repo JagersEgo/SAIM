@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://barue46j3r0kx"]
+
+[ext_resource type="PackedScene" uid="uid://hcqoethrmted" path="res://entities/world/target.tscn" id="1_6rjdh"]
+[ext_resource type="PackedScene" uid="uid://crwpt23mbdkey" path="res://entities/components/angelic_im_movement.tscn" id="2_htya5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htya5"]
+shading_mode = 0
+diffuse_mode = 3
+disable_ambient_light = true
+albedo_color = Color(0.823529, 0.0588235, 0.223529, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hcdyp"]
+material = SubResource("StandardMaterial3D_htya5")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0gdte"]
+
+[node name="air_angelic" unique_id=924044141 instance=ExtResource("1_6rjdh")]
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = true
+linear_damp_mode = 1
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=321942722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_hcdyp")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1784844226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="target" parent="." index="2" unique_id=535733758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CollisionShape3D2" parent="target" index="0" unique_id=1732754611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0gdte")
+
+[node name="Health" parent="." index="3" unique_id=3196332]
+invincible = true
+
+[node name="angelic_im_movement" parent="." index="4" unique_id=164406031 node_paths=PackedStringArray("body") instance=ExtResource("2_htya5")]
+body = NodePath("..")
+speed = 9.0
+radius = 35.0
+min_radius = 25.0

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bar0rw1ilrio"]
+
+[ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_ijhnf"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_5vdg2"]
+[ext_resource type="Script" uid="uid://mey3v3ivr2uw" path="res://TUI/tui_button.gd" id="3_rrp6l"]
+[ext_resource type="Script" uid="uid://cn0o5pi0j78dk" path="res://menus/config_select.gd" id="4_5vdg2"]
+
+[node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
+script = ExtResource("1_ijhnf")
+nodes = [NodePath("TuiComment"), NodePath("TuiButton2"), NodePath("TuiButton3"), NodePath("TuiButton4"), NodePath("TuiButton5")]
+
+[node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
+script = ExtResource("2_5vdg2")
+text = Array[String](["Scenario Select"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiButton2" type="Node2D" parent="." unique_id=1456191912]
+script = ExtResource("3_rrp6l")
+text = "Static"
+marker = "1"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton3" type="Node2D" parent="." unique_id=1781486400]
+script = ExtResource("3_rrp6l")
+text = "Angelic"
+marker = "2"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton4" type="Node2D" parent="." unique_id=1175334206]
+script = ExtResource("3_rrp6l")
+text = "Pokeball"
+marker = "3"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiButton5" type="Node2D" parent="." unique_id=1142481420]
+script = ExtResource("3_rrp6l")
+text = "Switching"
+marker = "4"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="Buttons" type="Node" parent="." unique_id=633565085]
+script = ExtResource("4_5vdg2")

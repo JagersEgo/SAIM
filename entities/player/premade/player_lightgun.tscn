@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dwlxyxmvc4p5n"]
+
+[ext_resource type="PackedScene" uid="uid://bg7vi8v3s5hpa" path="res://entities/player/base/player.tscn" id="1_3mbp4"]
+[ext_resource type="PackedScene" uid="uid://w5hd44w6btxu" path="res://weapons/light_gun.tscn" id="2_21kvm"]
+
+[node name="Player" unique_id=702401804 instance=ExtResource("1_3mbp4")]
+
+[node name="lg" parent="head" parent_id_path=PackedInt32Array(211639828) index="1" unique_id=1018264455 instance=ExtResource("2_21kvm")]
+
+[connection signal="got_a_hit" from="head/lg" to="StatTrack" method="add_hit"]
+[connection signal="got_a_hurt" from="head/lg" to="ui/Control" method="on_hurt"]
+[connection signal="got_kill" from="head/lg" to="StatTrack" method="add_kill"]
+[connection signal="shoot" from="head/lg" to="StatTrack" method="add_shot"]
+[connection signal="primary_h" from="player_input_manager" to="head/lg" method="try_shoot"]
+
+[editable path="ui"]

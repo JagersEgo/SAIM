@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c01yhm4ac7x32"]
+
+[ext_resource type="Script" uid="uid://0pwsjdaohm26" path="res://TUI/tui_node.gd" id="1_sqhct"]
+
+[node name="TuiNode" type="Node2D" unique_id=531639866]
+script = ExtResource("1_sqhct")

@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://bradddvj87ylm"]
+
+[ext_resource type="AudioStream" uid="uid://cx17fhaq6egfm" path="res://assets/sound/temp/saya_cute.ogg" id="1_hhep7"]
+[ext_resource type="Texture2D" uid="uid://0n0n2d3p6giv" path="res://crosshairs/hitmarker_2.png" id="3_s7f5l"]
+[ext_resource type="PackedScene" uid="uid://fnqkt1pbx5l0" path="res://assets/reticles/reticle_skull.tscn" id="4_e7wvk"]
+
+[sub_resource type="GDScript" id="GDScript_xmswo"]
+script/source = "extends Control
+
+const PATH = \"hitmarker.ini\"
+
+const SETTINGS := [
+	{
+		\"section\": \"hitmarker\",
+		\"key\": \"scale\",
+		\"prop\": \"hitmarker_scale\",
+		\"type\": \"float\",
+		\"default\": 1.0,
+	},
+	{
+		\"section\": \"hitmarker\",
+		\"key\": \"hitmarker_file\",
+		\"prop\": \"hitmarker_path\",
+		\"type\": \"string\",
+		\"default\": \"./crosshairs/hitmarker_2.png\",
+	},
+	{
+		\"section\": \"hitmarker\",
+		\"key\": \"red\",
+		\"prop\": \"red\",
+		\"type\": \"int\",
+		\"default\": 203,
+	},
+	{
+		\"section\": \"hitmarker\",
+		\"key\": \"green\",
+		\"prop\": \"green\",
+		\"type\": \"int\",
+		\"default\": 166,
+	},
+	{
+		\"section\": \"hitmarker\",
+		\"key\": \"blue\",
+		\"prop\": \"blue\",
+		\"type\": \"int\",
+		\"default\": 247,
+	},
+]
+
+@onready var hurt_marker: Sprite2D = $HitMarker
+#@onready var kill_marker: Control = $KillMarker
+
+var hitmarker_scale : float
+var red : int
+var green : int
+var blue : int
+var hitmarker_path : String
+
+func on_kill():
+	$AudioStreamPlayer.play()
+	hurt_marker.modulate.a = 1.0
+
+func on_hurt():
+	$AudioStreamPlayer.play()
+	hurt_marker.modulate.a = 1.0
+
+
+func _ready() -> void:
+	ConfigManager.load_config(PATH, SETTINGS, self)
+	
+	hurt_marker.modulate.r8 = red
+	hurt_marker.modulate.g8 = green
+	hurt_marker.modulate.b8 = blue
+	
+	hurt_marker.modulate.a = 0.0
+	
+	print(hitmarker_scale)
+	
+	hurt_marker.scale.x = hitmarker_scale
+	hurt_marker.scale.y = hitmarker_scale
+	
+	var image := ConfigManager.load_png(hitmarker_path)
+	if image == null:
+		return
+
+	var texture := ImageTexture.new()
+	texture.set_image(image)
+	if texture == null:
+		return
+
+	hurt_marker.texture = texture
+
+func _process(delta: float) -> void:
+	#kill_marker.modulate.a = exp_lerp_cutoff(kill_marker.modulate.a, 0, 0.0003, delta, 0.01)
+	hurt_marker.modulate.a = exp_lerp_cutoff(hurt_marker.modulate.a, 0, 0.0003, delta, 0.01)
+
+func exp_lerp_cutoff(current: float, target: float, rate: float, delta: float, cutoff: float) -> float:
+	var difference = target - current
+	if abs(difference) <= cutoff:
+		return target
+	return current + difference * (1.0 - pow(rate, delta))
+"
+
+[node name="kill_feedback" type="Control" unique_id=1679834355]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xmswo")
+
+[node name="HitMarker" type="Sprite2D" parent="." unique_id=1232436961]
+texture = ExtResource("3_s7f5l")
+
+[node name="KillMarker" parent="." unique_id=946434673 instance=ExtResource("4_e7wvk")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=566708987]
+stream = ExtResource("1_hhep7")
+max_polyphony = 2
