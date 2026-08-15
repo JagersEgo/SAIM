@@ -15,7 +15,7 @@ general/accessibility_driver="dummy"
 
 [application]
 
-config/name="scratchpad"
+config/name="saim"
 config/version="0.1"
 run/main_scene="uid://bjba2v1kmuux"
 config/features=PackedStringArray("4.7", "Forward Plus")
@@ -37,7 +37,6 @@ PluginLoader="*uid://bwvlc3spe8mol"
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
-window/size/resizable=false
 window/size/sharp_corners=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
