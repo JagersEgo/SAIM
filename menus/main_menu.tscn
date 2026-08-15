@@ -12,7 +12,7 @@ closable = false
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_11gta")
-text = Array[String]([" [ Simple Aim v0.1 ]────────────[F1] Help [F8] Exit"])
+text = Array[String]([" [ Simple Aim v0.1 ]───────────────────── [F8] Exit"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiComment2" type="Node2D" parent="." unique_id=1837668384]
@@ -28,13 +28,13 @@ metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="TuiButton2" type="Node2D" parent="." unique_id=1622699106]
 script = ExtResource("3_cxdly")
-text = "Continue"
+text = "Continue (not working)"
 marker = "2"
 metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="TuiButton3" type="Node2D" parent="." unique_id=599160022]
 script = ExtResource("3_cxdly")
-text = "Settings"
+text = "Settings (not working)"
 marker = "3"
 metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
