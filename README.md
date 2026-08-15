@@ -52,3 +52,5 @@ This is mainly so it can be run quickly and alongside games without being unusab
 I was never happy with any of the options for aim trainers right now, most are heavy, slow, and move away from the idea of simply training your aim. That's why I wanted to make one that was just simple, clean and fast
 
 I just wated it to be: `open, pick a scenario, aim`
+
+**Feel free to message me anything on discord! @`.gov.au`**
