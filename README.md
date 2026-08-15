@@ -25,9 +25,6 @@ I always hated running through settings menus, so all config is done in `.ini` f
 
 The core is intentionally minimal, so you can add more onto it. Plugins currently are GDScript files, which are able to add any functionality godot engine supports. But proper scene imports are being worked on 
 
-Right now, just simple custom gdscript files 
-- 
-
 ### High performance
 
 Startup time, and performance, is a high priority for me, so you can run SAIM between rounds and such, I measure a 1 second startup time on an average system and 2000 fps. 
