@@ -6,6 +6,9 @@
 _/_/_/    _/    _/  _/_/_/  _/      _/       
                                 
 ```
+![Godot Engine](https://img.shields.io/badge/godotengine-%23478CBF.svg?style=for-the-badge&logo=godotengine&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-%23FCC624.svg?style=for-the-badge&logo=linux&logoColor=black)
+
 SAIM (Simple AIM) is an intentionally minimal aim trainer built around a few of my simple goals:
 
 - All offline
