@@ -13,7 +13,7 @@ func add_hit():
 func add_kill():
 	kills += 1
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	queue_redraw() 
 
 func _draw() -> void:
@@ -34,4 +34,4 @@ func _draw() -> void:
 		#print("shots: ", shots)
 
 func get_accuracy() -> String:
-	return "%.2f%%" % (float(hits * 100)/shots if shots != 0 else 0)
+	return "%.2f%%" % (float(hits * 100)/shots if shots != 0 else 0.0)

@@ -33,8 +33,7 @@ script/source = "extends Node
 
 
 func _ready():
-	Input.set_use_accumulated_input(true)
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.set_use_accumulated_input(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
