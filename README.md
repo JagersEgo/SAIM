@@ -22,10 +22,12 @@ I was never happy with any of the options for aim trainers right now, most are h
 
 I just wanted it to be: `open, pick a scenario, aim`
 
- ## Screenshots:
+ ## Preview:
  
 ![](.github/screenshot_in_game.png)
 ![](.github/screenshot_menu.png)
+
+ <img width="540" height="304" alt="output" src="https://github.com/user-attachments/assets/2620f10c-bc9d-442d-bafd-f40b330b7735" />
 
 ## Quick start guide
 
