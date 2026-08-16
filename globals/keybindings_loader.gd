@@ -95,7 +95,11 @@ func _ready() -> void:
 		
 			var kc = OS.find_keycode_from_string(key)
 			if kc == 0:
-				print("[Keybindings Loader] Unknown key:", key)
+				ConfigManager.push_notification(
+					ConfigManager.NotificationTypes.WARN,
+					self.name,
+					"Unknown key: \"" + key + "\" for " + action
+				)
 			
 			var event := InputEventKey.new()
 			event.physical_keycode = kc

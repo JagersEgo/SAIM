@@ -31,6 +31,7 @@ Config="*uid://dyp58f0nu2h0q"
 ConfigManager="*uid://qdwhlm28wp7e"
 KeybindingsLoader="*uid://brsj566vg038b"
 PluginLoader="*uid://bwvlc3spe8mol"
+ConfigNotifications="*uid://bv3yx553n7ecr"
 Fps="*uid://cug5f02uj0la6"
 CloseListener="*uid://du4sountsjd6y"
 

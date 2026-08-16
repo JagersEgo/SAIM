@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bv3yx553n7ecr"]
+
+[ext_resource type="Script" uid="uid://bq0ww8wtobver" path="res://globals/config_notifications.gd" id="1_oyhr2"]
+
+[node name="ConfigNotifications" type="Node2D" unique_id=1518570748]
+script = ExtResource("1_oyhr2")

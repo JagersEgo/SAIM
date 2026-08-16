@@ -1,7 +1,17 @@
 extends Node
 
+enum NotificationTypes {
+	NOTICE,
+	WARN,
+	ERROR,
+	FATAL
+}
+
 const VERSION_SECTION := "meta"
 const VERSION_KEY := "game_version"
+
+# Format: [[NotificationTypes, String]...]
+var notifications : Array = []
 
 func get_game_version() -> String:
 	return ProjectSettings.get_setting("application/config/version", "0.0.0")
@@ -135,6 +145,15 @@ func _decode(type: String, value: Variant, fallback: Variant) -> Variant:
 		_:
 			return value
 
+func push_notification(type: NotificationTypes, source: String, message: String):
+	var line := "[%s]: %s" %[source, message]
+	
+	notifications.push_back([type, line])
+
+func get_notifications():
+	return notifications
+
+## @deprecated: Should not be in this global
 func load_png(path: String) -> Image:
 	# File exists?
 	if not FileAccess.file_exists(path):
