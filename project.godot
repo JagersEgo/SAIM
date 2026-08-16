@@ -28,10 +28,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Config="*uid://dyp58f0nu2h0q"
-Fps="*uid://cug5f02uj0la6"
 ConfigManager="*uid://qdwhlm28wp7e"
-CloseListener="*uid://du4sountsjd6y"
+KeybindingsLoader="*uid://brsj566vg038b"
 PluginLoader="*uid://bwvlc3spe8mol"
+Fps="*uid://cug5f02uj0la6"
+CloseListener="*uid://du4sountsjd6y"
 
 [display]
 
