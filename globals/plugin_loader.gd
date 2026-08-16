@@ -31,13 +31,13 @@ func _scan_directory(path: String, files: Array[String]) -> void:
 	dir.list_dir_begin()
 
 	while true:
-		var name := dir.get_next()
-		if name == "":
+		var dir_name := dir.get_next()
+		if dir_name == "":
 			break
-		if name.begins_with(".") or name.begins_with("_"):
+		if dir_name.begins_with(".") or dir_name.begins_with("_"):
 			continue
-		if name.get_extension() == "gd":
-			var full_path := path.path_join(name)
+		if dir_name.get_extension() == "gd":
+			var full_path := path.path_join(dir_name)
 			files.append(full_path)
 		
 	dir.list_dir_end()

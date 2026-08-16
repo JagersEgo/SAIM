@@ -35,6 +35,11 @@ ConfigNotifications="*uid://bv3yx553n7ecr"
 Fps="*uid://cug5f02uj0la6"
 CloseListener="*uid://du4sountsjd6y"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+gdscript/warnings/narrowing_conversion=0
+
 [display]
 
 window/size/viewport_width=2560
