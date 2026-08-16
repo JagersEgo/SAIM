@@ -126,6 +126,7 @@ func _decode(type: String, value: Variant, fallback: Variant) -> Variant:
 				return Color(value)
 
 			push_warning("Invalid color, using default.", value)
+			push_notification(NotificationTypes.WARN, "Decoder", "Invalid color, using default. " + value)
 			return fallback
 
 		"int":
@@ -133,6 +134,7 @@ func _decode(type: String, value: Variant, fallback: Variant) -> Variant:
 				return value
 
 			push_warning("Invalid integer, using default.", value)
+			push_notification(NotificationTypes.WARN, "Decoder", "Invalid integer, using default. " + str(value))
 			return fallback
 		
 		"float":
@@ -140,6 +142,7 @@ func _decode(type: String, value: Variant, fallback: Variant) -> Variant:
 				return value
 
 			push_warning("Invalid float, using default.", value)
+			push_notification(NotificationTypes.WARN, "Decoder", "Invalid float, using default. " + str(value))
 			return fallback
 
 		_:
@@ -158,12 +161,14 @@ func load_png(path: String) -> Image:
 	# File exists?
 	if not FileAccess.file_exists(path):
 		push_error("File does not exist: %s" % path)
+		push_notification(NotificationTypes.ERROR, "load png", "File does not exist: %s" % path)
 		return null
 
 	# Open file
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Failed to open file: %s" % path)
+		push_notification(NotificationTypes.ERROR, "load png", "Failed to open file: %s" % path)
 		return null
 
 	# Load the image
@@ -172,11 +177,13 @@ func load_png(path: String) -> Image:
 
 	if err != OK:
 		push_error("Failed to load PNG. Error code: %d" % err)
+		push_notification(NotificationTypes.ERROR, "load png", "Failed to load png: %s" % path)
 		return null
 
 	# Sanity check
 	if image.get_width() <= 0 or image.get_height() <= 0:
 		push_error("Loaded image has invalid dimensions.")
+		push_notification(NotificationTypes.ERROR, "load png", "Failed to load png: %s" % path)
 		return null
 
 	return image
