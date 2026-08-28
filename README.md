@@ -11,9 +11,10 @@ _/_/_/    _/    _/  _/_/_/  _/      _/
 SAIM (**S**imple **Aim**) is an intentionally minimal aim trainer built around a few of my simple goals:
 
 - All offline
-- Portable binary
+- Minimal
 - Highly customisable
-- High performance, low latency (2000fps on an average setup)
+- High performance, low latency, stable frame timing
+- Portable binary
 - Linux as first-class platform
 
 ## Why?
@@ -22,7 +23,7 @@ I was never happy with any of the options for aim trainers right now, most are h
 
 I just wanted it to be: `open, pick a scenario, aim`
 
- ## Preview:
+## Preview:
  
 ![](.github/screenshot_in_game.png)
 ![](.github/screenshot_menu.png)
@@ -41,13 +42,19 @@ Settings are all changed with ordinary text editors of the `.ini` files stored n
 
 ## Features:
 
+### Performant
+
+Startup time, frame timing, and latency, are high priorities for me so you can run SAIM with other games running, so far on my (average) system I measure >1 second startup, 2000 fps with steady frame times
+
+The goal of this isn't really for 2000 fps standalone, although that is a plus. It's mainly so it can live while another game is hogging CPU and GPU resources while remaining playable
+
 ### All config through `.ini` files
 
-I always hated running through settings menus, so all config is done in `.ini` files stored next to the binary. I perfer this system for making settings easier to inspect, edit, back up and share
+I always hated running through settings menus, so all config is done in `.ini` files stored next to the binary. I chose this system for making settings easier to inspect, edit, back up and share
 
 #### Config explained
 
-The main config files are:
+The config files are:
 
 `config.ini` - The core game configuration
 
@@ -59,13 +66,9 @@ The main config files are:
 
 ### Plugins system
 
-The core is intentionally minimal, so you can add more onto it. Plugins currently are GDScript files, which are able to add any functionality Godot engine supports. 
+The core is intentionally minimal, so more can be added onto it. Plugins currently are GDScript files, which are able to add any functionality Godot engine supports. 
 
-### Performant
-
-Startup time, frame timing, and latency, are high priorities for me, so you can run SAIM with other games running and such, so far I measure a 1 second startup time on my (average) system and 2000 fps. 
-
-The goal of this isn't really for 2000 fps standalone, although that is a plus. It's mainly so it can live while another game is hogging CPU and GPU resources
+Included is an example one `sensitivity_randomiser` which is an sample implementation of an intentionally hacky sensitivity randomiser
 
 ## Plans for the future:
 
@@ -74,8 +77,7 @@ The goal of this isn't really for 2000 fps standalone, although that is a plus. 
 - Fully customisable everything
 	+ Working on hit sounds, target/arena rendering etc.
 - Better Wayland support on Linux
-	+ Seems currently to be an issue with Godot's wayland especially with high polling rate mice
- implementation (?)
+	+ Seems currently to be an issue with Godot's wayland implementation (?) especially with high polling rate mice which seem to drop inputs
  
 **Feel free to message me anything on discord! @`.gov.au`**
 
