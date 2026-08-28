@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://lud0fsu7he14"]
+
+[ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_6yqt3"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_6oibr"]
+[ext_resource type="PackedScene" uid="uid://cws285m2unyon" path="res://TUI/TUIButtonSimple.tscn" id="3_6yqt3"]
+[ext_resource type="Script" uid="uid://cryt0vbt2pcd2" path="res://menus/help_config.gd" id="4_87ko2"]
+
+[node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
+script = ExtResource("1_6yqt3")
+nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple")]
+
+[node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
+script = ExtResource("2_6oibr")
+text = Array[String](["Config files", "-------", "  󰈔 config.ini       => General settings", "  󰈔 crosshair.ini    => Crosshair", "  󰈔 hitmarker.ini    => Hitmarker", "  󰈔 input_map.ini    => Change keybinds", "  󰉋 scenario_config/ => Configure scenarios", "", "", ""])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiButtonSimple" parent="." unique_id=1169410865 instance=ExtResource("3_6yqt3")]
+text = "Back"
+
+[node name="Buttons" type="Node" parent="." unique_id=633565085]
+script = ExtResource("4_87ko2")
+
+[connection signal="pressed" from="TuiButtonSimple" to="Buttons" method="_on_tui_button_simple_pressed"]

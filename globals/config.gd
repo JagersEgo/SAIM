@@ -114,7 +114,6 @@ var render_scale: float
 var master_volume: float
 
 const default_font_size = 16 
-#const default_font = preload("res://assets/fonts/Hack-Bold.ttf")
 const default_font = preload("res://assets/fonts/FiraCode-Bold.ttf")
 
 func _ready() -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cws285m2unyon"]
+
+[ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="1_chyu7"]
+
+[node name="TuiButtonSimple" type="Node2D" unique_id=1169410865]
+script = ExtResource("1_chyu7")

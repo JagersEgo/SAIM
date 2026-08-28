@@ -28,13 +28,13 @@ metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="TuiButton2" type="Node2D" parent="." unique_id=1622699106]
 script = ExtResource("3_cxdly")
-text = "Continue (not working)"
+text = "Help"
 marker = "2"
 metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="TuiButton3" type="Node2D" parent="." unique_id=599160022]
 script = ExtResource("3_cxdly")
-text = "Settings (not working)"
+text = "Actions"
 marker = "3"
 metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
@@ -50,4 +50,5 @@ tui_scene = NodePath("..")
 
 [connection signal="pressed" from="TuiButton" to="Buttons" method="_on_tui_button_pressed"]
 [connection signal="pressed" from="TuiButton2" to="Buttons" method="_on_tui_button_2_pressed"]
+[connection signal="pressed" from="TuiButton3" to="Buttons" method="_on_tui_button_3_pressed"]
 [connection signal="pressed" from="TuiButton4" to="Buttons" method="_on_tui_button_4_pressed"]

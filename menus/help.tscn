@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bmyaay77hyo5b"]
+
+[ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_elph6"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_wvy5h"]
+[ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="3_wvy5h"]
+[ext_resource type="Script" uid="uid://bb3wxl0x2ni1p" path="res://menus/help.gd" id="4_wvy5h"]
+
+[node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
+script = ExtResource("1_elph6")
+nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("TuiButtonSimple2")]
+
+[node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
+script = ExtResource("2_wvy5h")
+text = Array[String](["Help", "----", "  Navigate with (default) WASD, select with space.", "", "  All configuration is through .ini files next to", "  the binary", "", "", ""])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiButtonSimple" type="Node2D" parent="." unique_id=515270821]
+script = ExtResource("3_wvy5h")
+text = "Back"
+metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
+
+[node name="TuiButtonSimple2" type="Node2D" parent="." unique_id=1333799341]
+script = ExtResource("3_wvy5h")
+text = "View config files"
+metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
+
+[node name="Buttons" type="Node" parent="." unique_id=633565085]
+script = ExtResource("4_wvy5h")
+
+[connection signal="pressed" from="TuiButtonSimple" to="Buttons" method="_on_tui_button_2_pressed"]
+[connection signal="pressed" from="TuiButtonSimple2" to="Buttons" method="_on_tui_button_3_pressed"]

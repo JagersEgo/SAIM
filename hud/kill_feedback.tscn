@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bradddvj87ylm"]
 
-[ext_resource type="AudioStream" uid="uid://cx17fhaq6egfm" path="res://assets/sound/temp/saya_cute.ogg" id="1_hhep7"]
+[ext_resource type="AudioStream" uid="uid://cx17fhaq6egfm" path="res://assets/sounds/saya_cute.ogg" id="1_hhep7"]
 [ext_resource type="Texture2D" uid="uid://0n0n2d3p6giv" path="res://crosshairs/hitmarker_2.png" id="3_s7f5l"]
 [ext_resource type="PackedScene" uid="uid://fnqkt1pbx5l0" path="res://assets/reticles/reticle_skull.tscn" id="4_e7wvk"]
 

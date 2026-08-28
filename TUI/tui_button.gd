@@ -1,5 +1,5 @@
 extends TuiNode
-class_name TuiCentreButton
+class_name TuiButton
 
 signal pressed
 

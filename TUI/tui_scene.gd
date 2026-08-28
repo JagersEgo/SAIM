@@ -36,7 +36,9 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if closable:
 			queue_free()
-			replace(last_scene, true)
+			
+			if last_scene:
+				replace(last_scene, true)
 
 	elif Input.is_action_just_pressed("ui_down"):
 		pointer += 1
@@ -72,7 +74,7 @@ func _draw() -> void:
 					Config.default_font, 
 					draw_location, 
 					#"█████████████████", 
-					"████████████████████████████████████████████████████", 
+					"██████████████████████████████████████████████████", 
 					HORIZONTAL_ALIGNMENT_LEFT, 
 					-1, 
 					Config.default_font_size, 
@@ -82,7 +84,7 @@ func _draw() -> void:
 					Config.default_font, 
 					draw_location + Vector2i(Config.default_font_size/2, 0),
 					#"████████████████", 
-					"███████████████████████████████████████████████████", 
+					"██████████████████████████████████████████████████", 
 					HORIZONTAL_ALIGNMENT_LEFT, 
 					-1, 
 					Config.default_font_size, 
@@ -137,6 +139,6 @@ func adopt(scene: Node):
 
 func reenable():
 	no_draw = false
-	self.process_mode = Node.PROCESS_MODE_INHERIT
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	self.queue_redraw()
