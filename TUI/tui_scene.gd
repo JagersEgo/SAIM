@@ -1,15 +1,15 @@
 extends Node2D
 class_name TuiScene
 
-const width := 256 #52 characters
-const height := 112
+@export var width := 256 #52 characters
+@export var height := 112
 
 var start_font_draw = Vector2i(
 	-width + Config.default_font_size*0.5 - 2, 
 	-height + Config.default_font_size + 4
 )
 
-const RECT := Rect2(Vector2(-width, -height), Vector2(width * 2, height * 2))
+var RECT := Rect2(Vector2(-width, -height), Vector2(width * 2, height * 2))
 
 @onready var viewport = get_viewport()
 @export var container : TUIContainer
@@ -32,7 +32,7 @@ func _ready() -> void:
 			selectable += 1
 			selectable_nodes.append(n)
 
-func _unhandled_key_input(_event: InputEvent) -> void:
+func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if closable:
 			queue_free()
@@ -47,6 +47,13 @@ func _unhandled_key_input(_event: InputEvent) -> void:
 		pointer = (pointer - 1 + selectable) % selectable
 	elif Input.is_action_just_pressed("ui_accept"):
 		selectable_nodes[pointer].interact()
+	elif event is InputEventKey and event.pressed and not event.echo:
+		var n : int = event.keycode - KEY_0
+
+		if n >= 1 and n <= 9:
+			if n <= selectable_nodes.size():
+				selectable_nodes[n - 1].interact()
+
 	
 	viewport.set_input_as_handled()
 	queue_redraw()

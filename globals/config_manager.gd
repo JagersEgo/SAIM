@@ -21,7 +21,7 @@ func get_config_path(file: String) -> String:
 
 func get_game_root() -> String:
 	if OS.has_feature("editor"):
-		return ProjectSettings.globalize_path("res://")
+		return ProjectSettings.globalize_path("res://").path_join("fake_root")
 	else:
 		return OS.get_executable_path().get_base_dir()
 
@@ -30,6 +30,8 @@ func apply_defaults(settings, holder) -> void:
 		holder.set(setting.prop, setting.default)
 
 func load_config(config_path: String, settings, holder) -> void:
+	config_path = get_game_root().path_join(config_path)
+	
 	print("[Config] Loading config from: %s" % config_path)
 	apply_defaults(settings, holder)
 
@@ -158,6 +160,8 @@ func get_notifications():
 
 ## @deprecated: Should not be in this global
 func load_png(path: String) -> Image:
+	path = get_config_path(path)
+	
 	# File exists?
 	if not FileAccess.file_exists(path):
 		push_error("File does not exist: %s" % path)

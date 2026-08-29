@@ -7,7 +7,7 @@
 
 [node name="Actions" type="Node2D" unique_id=108601775 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_hc1il")
-nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple2/TuiButtonSimple"), NodePath("FullscreenIndicator"), NodePath("TuiComment2"), NodePath("TuiComment3"), NodePath("TuiButtonSimple2")]
+nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("FullscreenIndicator"), NodePath("TuiComment2"), NodePath("TuiButtonSimple3"), NodePath("MuteIndicator"), NodePath("TuiComment3"), NodePath("TuiButtonSimple2")]
 metadata/_custom_type_script = "uid://b4f4by0bwi4vw"
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=1805304072]
@@ -20,7 +20,23 @@ script = ExtResource("2_jak2t")
 text = Array[String]([""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
+[node name="TuiButtonSimple" type="Node2D" parent="." unique_id=1041891265]
+script = ExtResource("2_wa7kt")
+text = "  Toggle Fullscreen State"
+metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
+
 [node name="FullscreenIndicator" type="Node2D" parent="." unique_id=1776398113]
+script = ExtResource("2_jak2t")
+text = Array[String](["x"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiButtonSimple3" type="Node2D" parent="." unique_id=487977953]
+script = ExtResource("2_wa7kt")
+text = "  Toggle mute"
+metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
+
+[node name="MuteIndicator" type="Node2D" parent="." unique_id=578692040]
+unique_name_in_owner = true
 script = ExtResource("2_jak2t")
 text = Array[String](["x"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
@@ -30,18 +46,14 @@ script = ExtResource("2_wa7kt")
 text = "Back"
 metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
 
-[node name="TuiButtonSimple" type="Node2D" parent="TuiButtonSimple2" unique_id=1041891265]
-script = ExtResource("2_wa7kt")
-text = "Toggle Fullscreen State"
-metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
-
 [node name="TuiComment3" type="Node2D" parent="." unique_id=30325374]
 script = ExtResource("2_jak2t")
-text = Array[String](["", "", "", "", ""])
+text = Array[String](["", "", ""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="Buttons" type="Node" parent="." unique_id=70869131]
 script = ExtResource("4_45fwn")
 
+[connection signal="pressed" from="TuiButtonSimple" to="Buttons" method="_on_tui_button_simple_pressed"]
+[connection signal="pressed" from="TuiButtonSimple3" to="Buttons" method="_on_tui_button_simple_3_pressed"]
 [connection signal="pressed" from="TuiButtonSimple2" to="Buttons" method="_on_tui_button_simple_2_pressed"]
-[connection signal="pressed" from="TuiButtonSimple2/TuiButtonSimple" to="Buttons" method="_on_tui_button_simple_pressed"]

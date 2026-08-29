@@ -114,7 +114,7 @@ var render_scale: float
 var master_volume: float
 
 const default_font_size = 16 
-const default_font = preload("res://assets/fonts/FiraCode-Bold.ttf")
+const default_font = preload("res://assets/fonts/JetBrainsMono-Bold.ttf")
 
 func _ready() -> void:
 	print("[Config_main] Start: ", Time.get_ticks_msec())
@@ -124,11 +124,6 @@ func _ready() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
 		get_viewport().set_scaling_3d_scale(render_scale)
-		
-		#get_window().content_scale_size = Vector2i(fullscreen_width, fullscreen_height)
-		
-		#get_tree().root.content_scale_size = Vector2i(fullscreen_width, fullscreen_height)
-		
 		
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

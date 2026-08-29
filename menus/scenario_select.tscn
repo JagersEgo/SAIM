@@ -45,7 +45,7 @@ nodes = [NodePath("TuiComment"), NodePath("TuiButton2"), NodePath("TuiButton3"),
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_pshu2")
-text = Array[String](["Scenario Select"])
+text = Array[String](["Scenario Select", "-------"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiButton2" type="Node2D" parent="." unique_id=1456191912]

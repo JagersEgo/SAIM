@@ -11,7 +11,7 @@ nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("TuiButto
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_wvy5h")
-text = Array[String](["Help", "----", "  Navigate with (default) WASD, select with space.", "", "  All configuration is through .ini files next to", "  the binary", "", "", ""])
+text = Array[String](["Help", "----", "  Navigate with (default) WASD, select with space.", "", "  All configuration is through .ini files next to", "  the binary.", "", "  F8 can be used anywhere to quick-exit.", ""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiButtonSimple" type="Node2D" parent="." unique_id=515270821]
