@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtoi5qbdrolm4"]
 
-[ext_resource type="Script" uid="uid://bxv5trqrfljtl" path="res://scenes/scenarios/simple_static/simple_static.gd" id="1_bihv4"]
+[ext_resource type="Script" uid="uid://bxv5trqrfljtl" path="res://fake_root/scenarios/simple_static/simple_static.gd" id="1_bihv4"]
 [ext_resource type="PackedScene" uid="uid://rexr47hkl2jx" path="res://entities/spawner/orb_spawner.tscn" id="3_4s7rj"]
 [ext_resource type="PackedScene" uid="uid://b2awvi0ukbdeh" path="res://entities/player/premade/player_pistol.tscn" id="3_bihv4"]
 [ext_resource type="PackedScene" uid="uid://c24l0mbjy02k5" path="res://assets/environments/cube/cube.tscn" id="4_ho8k0"]

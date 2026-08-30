@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckruqji2mk0s5"]
 
 [ext_resource type="PackedScene" uid="uid://dwlxyxmvc4p5n" path="res://entities/player/premade/player_lightgun.tscn" id="1_gvyyq"]
-[ext_resource type="Script" uid="uid://dkbt4mn4j2pqw" path="res://scenes/scenarios/placeholder_scenario.gd" id="1_xkddd"]
+[ext_resource type="Script" uid="uid://dkbt4mn4j2pqw" path="res://scenes/placeholder_scenario.gd" id="1_xkddd"]
 [ext_resource type="PackedScene" uid="uid://barue46j3r0kx" path="res://entities/world/angelic.tscn" id="2_xgydg"]
 [ext_resource type="PackedScene" uid="uid://c24l0mbjy02k5" path="res://assets/environments/cube/cube.tscn" id="4_ylvwm"]
 

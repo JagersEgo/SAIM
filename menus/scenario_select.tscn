@@ -2,80 +2,109 @@
 
 [ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_2q086"]
 [ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_pshu2"]
-[ext_resource type="Script" uid="uid://mey3v3ivr2uw" path="res://TUI/tui_button.gd" id="3_2q086"]
+[ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="3_cs41s"]
 
 [sub_resource type="GDScript" id="GDScript_11gta"]
 script/source = "extends Node
 
-const SIMPLE_STATIC = preload(\"uid://dtoi5qbdrolm4\")
 const IN_GAME = preload(\"uid://cfiu5tli0l3el\")
-const AIR_ANGELIC = preload(\"uid://ckruqji2mk0s5\")
-const SWITCHING = preload(\"uid://ddojl0ijmsaoe\")
-const POKEBALL = preload(\"uid://c1ebdm7503k6d\")
+const SCENARIOS_FOLDER = \"scenarios\"
+const SCENARIO_MAIN_SCENE = \"main.tscn\"
+#const SCENARIO_METADATA = \"_metadata.gd\"
 
-
-func _on_tui_button_2_pressed() -> void:
-	var i := IN_GAME.instantiate()
-	i.bind_scenario(SIMPLE_STATIC)
+func _ready() -> void:
+	var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
+	var files : Array[String] = []
 	
-	get_parent().adopt(i)
-
-func _on_tui_button_3_pressed() -> void:
-	var i := IN_GAME.instantiate()
-	i.bind_scenario(AIR_ANGELIC)
+	_scan_directory(dir, files)
 	
-	get_parent().adopt(i)
-
-func _on_tui_button_4_pressed() -> void:
-	var i := IN_GAME.instantiate()
-	i.bind_scenario(POKEBALL)
+	var i := 0
+	for f in files:
+		i += 1
+		_make_button(f, i, dir.path_join(f))
 	
-	get_parent().adopt(i)
-
-func _on_tui_button_5_pressed() -> void:
-	var i := IN_GAME.instantiate()
-	i.bind_scenario(SWITCHING)
+	get_parent().nodes.append(%Back)
 	
-	get_parent().adopt(i)
+	get_parent().nodes_were_updated.call_deferred()
+	get_parent().queue_redraw.call_deferred()
+
+func _scan_directory(path: String, files: Array[String]) -> void:
+	var dir := DirAccess.open(path)
+	if dir == null:
+		push_error(\"Couldn't open directory: \" + path)
+		return
+
+	dir.list_dir_begin()
+
+	while true:
+		var dir_name := dir.get_next()
+		if dir_name == \"\":
+			break
+		if dir_name.begins_with(\".\") or dir_name.begins_with(\"_\"):
+			continue
+		
+		var scen := DirAccess.open(path.path_join(dir_name))
+		if scen == null:
+			push_error(\"Couldn't open scenario: \" + path)
+			continue
+		if !( \\
+			scen.get_files().has(SCENARIO_MAIN_SCENE) 
+			#&& (scen.get_files().has(SCENARIO_METADATA)) \\
+			) \\
+			:
+				continue
+		files.append(dir_name)
+		
+	dir.list_dir_end()
+
+func _make_button(bname : String, index : int, path : String):
+	var new := TuiButton.new()
+	
+	new.text = bname
+	new.marker = str(index)
+	
+	new.pressed.connect(
+		func(): 
+			var i := IN_GAME.instantiate()
+			
+			var main := path.path_join(SCENARIO_MAIN_SCENE)
+			
+			i.bind_scenario(load(main))
+			
+			get_parent().adopt(i)
+	)
+	
+	get_parent().add_child.call_deferred(new)
+	get_parent().nodes.append(new)
+
+#func _on_tui_button_2_pressed() -> void:
+	#var i := IN_GAME.instantiate()
+	#i.bind_scenario(SIMPLE_STATIC)
+	#
+	#get_parent().adopt(i)
+#
+
+
+func _on_back_pressed() -> void:
+	get_parent().kill_self()
 "
 
 [node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_2q086")
-nodes = [NodePath("TuiComment"), NodePath("TuiButton2"), NodePath("TuiButton3"), NodePath("TuiButton4"), NodePath("TuiButton5")]
+nodes = [NodePath("TuiComment")]
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_pshu2")
 text = Array[String](["Scenario Select", "-------"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
-[node name="TuiButton2" type="Node2D" parent="." unique_id=1456191912]
-script = ExtResource("3_2q086")
-text = "Static"
-marker = "1"
-metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+[node name="Back" type="Node2D" parent="." unique_id=2031653426]
+unique_name_in_owner = true
+script = ExtResource("3_cs41s")
+text = "Back"
+metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
 
-[node name="TuiButton3" type="Node2D" parent="." unique_id=1781486400]
-script = ExtResource("3_2q086")
-text = "Angelic"
-marker = "2"
-metadata/_custom_type_script = "uid://mey3v3ivr2uw"
-
-[node name="TuiButton4" type="Node2D" parent="." unique_id=1175334206]
-script = ExtResource("3_2q086")
-text = "Pokeball"
-marker = "3"
-metadata/_custom_type_script = "uid://mey3v3ivr2uw"
-
-[node name="TuiButton5" type="Node2D" parent="." unique_id=1142481420]
-script = ExtResource("3_2q086")
-text = "Switching"
-marker = "4"
-metadata/_custom_type_script = "uid://mey3v3ivr2uw"
-
-[node name="Buttons" type="Node" parent="." unique_id=633565085]
+[node name="Logic" type="Node" parent="." unique_id=633565085]
 script = SubResource("GDScript_11gta")
 
-[connection signal="pressed" from="TuiButton2" to="Buttons" method="_on_tui_button_2_pressed"]
-[connection signal="pressed" from="TuiButton3" to="Buttons" method="_on_tui_button_3_pressed"]
-[connection signal="pressed" from="TuiButton4" to="Buttons" method="_on_tui_button_4_pressed"]
-[connection signal="pressed" from="TuiButton5" to="Buttons" method="_on_tui_button_5_pressed"]
+[connection signal="pressed" from="Back" to="Logic" method="_on_back_pressed"]

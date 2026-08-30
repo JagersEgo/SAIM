@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1ebdm7503k6d"]
 
 [ext_resource type="PackedScene" uid="uid://dwlxyxmvc4p5n" path="res://entities/player/premade/player_lightgun.tscn" id="1_71l8t"]
-[ext_resource type="Script" uid="uid://bosgn00ml3cq4" path="res://scenes/scenarios/pokeball/pokeball.gd" id="1_imbe2"]
+[ext_resource type="Script" uid="uid://bosgn00ml3cq4" path="res://fake_root/scenarios/pokeball/pokeball.gd" id="1_imbe2"]
 [ext_resource type="PackedScene" uid="uid://rexr47hkl2jx" path="res://entities/spawner/orb_spawner.tscn" id="3_bcna0"]
 [ext_resource type="PackedScene" uid="uid://c24l0mbjy02k5" path="res://assets/environments/cube/cube.tscn" id="3_uqg4r"]
 

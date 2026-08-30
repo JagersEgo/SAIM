@@ -21,7 +21,7 @@ var last_scene : PackedScene
 
 var selectable_nodes: Array[TuiNode]
 
-var selectable : int
+var selectable : int = 0
 var pointer = 0
 
 var no_draw : bool = false
@@ -133,6 +133,10 @@ func replace(scene: PackedScene, is_last: bool = false):
 	
 	queue_free()
 
+func kill_self():
+	if last_scene:
+		replace(last_scene)
+
 func adopt(scene: Node):	
 	no_draw = true
 	self.process_mode = Node.PROCESS_MODE_DISABLED
@@ -149,3 +153,8 @@ func reenable():
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	self.queue_redraw()
+
+func nodes_were_updated():
+	selectable = 0
+	selectable_nodes = []
+	self._ready()
