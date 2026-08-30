@@ -45,7 +45,7 @@ func _scan_directory(path: String, files: Array[String]) -> void:
 		
 		var scen := DirAccess.open(path.path_join(dir_name))
 		if scen == null:
-			push_error(\"Couldn't open scenario: \" + path)
+			push_warning(\"Couldn't open scenario: \" + path)
 			continue
 		if !( \\
 			scen.get_files().has(SCENARIO_MAIN_SCENE) 
