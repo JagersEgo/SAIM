@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Metadata" format=3 uid="uid://dp48yg42xlpol"]
+
+[ext_resource type="Script" uid="uid://626omr1cv1sl" path="res://globals/metadata.gd" id="1_q536c"]
+
+[resource]
+script = ExtResource("1_q536c")
+name = "Switching"
+author = "Jager"
+type = "Switching"
+metadata/_custom_type_script = "uid://626omr1cv1sl"

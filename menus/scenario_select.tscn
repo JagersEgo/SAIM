@@ -10,7 +10,7 @@ script/source = "extends Node
 const IN_GAME = preload(\"uid://cfiu5tli0l3el\")
 const SCENARIOS_FOLDER = \"scenarios\"
 const SCENARIO_MAIN_SCENE = \"main.tscn\"
-#const SCENARIO_METADATA = \"_metadata.gd\"
+const SCENARIO_METADATA = \"_metadata.tres\"
 
 func _ready() -> void:
 	var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
@@ -49,7 +49,7 @@ func _scan_directory(path: String, files: Array[String]) -> void:
 			continue
 		if !( \\
 			scen.get_files().has(SCENARIO_MAIN_SCENE) 
-			#&& (scen.get_files().has(SCENARIO_METADATA)) \\
+			&& scen.get_files().has(SCENARIO_METADATA) \\
 			) \\
 			:
 				continue
@@ -57,10 +57,12 @@ func _scan_directory(path: String, files: Array[String]) -> void:
 		
 	dir.list_dir_end()
 
-func _make_button(bname : String, index : int, path : String):
+func _make_button(_bname : String, index : int, path : String):
 	var new := TuiButton.new()
 	
-	new.text = bname
+	var md = load(path.path_join(SCENARIO_METADATA)) as Metadata
+	
+	new.text = \"%s by %s [%s]\" % [md.name, md.author, md.type]
 	new.marker = str(index)
 	
 	new.pressed.connect(
@@ -76,13 +78,6 @@ func _make_button(bname : String, index : int, path : String):
 	
 	get_parent().add_child.call_deferred(new)
 	get_parent().nodes.append(new)
-
-#func _on_tui_button_2_pressed() -> void:
-	#var i := IN_GAME.instantiate()
-	#i.bind_scenario(SIMPLE_STATIC)
-	#
-	#get_parent().adopt(i)
-#
 
 
 func _on_back_pressed() -> void:
