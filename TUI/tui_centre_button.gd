@@ -6,7 +6,6 @@ signal pressed
 @export var text : String
 @export var width : int = 52
 
-
 func _ready() -> void:
 	interactable = true
 	text = center_string(text, width)

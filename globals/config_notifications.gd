@@ -30,7 +30,7 @@ func _draw() -> void:
 		## TODO: change color depending on notification type 
 		
 		draw_string(
-			Config.default_font, 
+			Config.main_font, 
 			draw_pos, 
 			line, 
 			HORIZONTAL_ALIGNMENT_LEFT, 

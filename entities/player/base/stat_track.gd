@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 
 func _draw() -> void:
 	draw_string(
-		Config.default_font, 
+		Config.main_font, 
 		Vector2i(2400,Config.default_font_size), 
 		self.get_accuracy(), 
 		HORIZONTAL_ALIGNMENT_RIGHT, 

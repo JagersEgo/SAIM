@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_q536c")
 name = "Pokeball"
-author = "Jager"
+author = "Built-in"
 type = "Switching"
 metadata/_custom_type_script = "uid://626omr1cv1sl"

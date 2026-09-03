@@ -1,5 +1,11 @@
 extends Node2D
 
+func _ready() -> void:
+	await get_tree().process_frame
+	
+	if !Config.show_fps:
+		queue_free()
+
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
 
@@ -14,7 +20,7 @@ func _draw() -> void:
 	
 	
 	draw_string(
-		Config.default_font, 
+		Config.main_font, 
 		Vector2i.ZERO + Vector2i(0, Config.default_font_size), 
 		line, 
 		HORIZONTAL_ALIGNMENT_LEFT, 

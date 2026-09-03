@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://nhxdo8vbqauo"]
+
+[ext_resource type="Script" uid="uid://cfuaxgi2gjd48" path="res://TUI/tui_picker.gd" id="1_tu5n5"]
+
+[node name="TuiPicker" type="Node2D" unique_id=1517419653]
+script = ExtResource("1_tu5n5")

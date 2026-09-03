@@ -80,6 +80,13 @@ const SETTINGS := [
 		"default": 1.0,
 	},
 	{
+		"section": "video",
+		"key": "show_fps",
+		"prop": "show_fps",
+		"type": "bool",
+		"default": true,
+	},
+	{
 		"section": "input",
 		"key": "sensitivity",
 		"prop": "sensitivity",
@@ -110,11 +117,15 @@ var fullscreen: bool
 var fullscreen_width: int
 var fullscreen_height: int
 var render_scale: float 
+var show_fps: bool
 
 var master_volume: float
 
 const default_font_size = 16 
-const default_font = preload("res://assets/fonts/JetBrainsMono-Bold.ttf")
+const main_font = preload("res://assets/fonts/JetBrainsMono-Bold.ttf")
+const bold_font = preload("res://assets/fonts/JetBrainsMono-ExtraBold.ttf")
+const light_font = preload("res://assets/fonts/JetBrainsMono-SemiBoldItalic.ttf")
+
 
 func _ready() -> void:
 	print("[Config_main] Start: ", Time.get_ticks_msec())
@@ -132,6 +143,8 @@ func _ready() -> void:
 	AudioServer.get_bus_index("Master"),
 	linear_to_db(master_volume)
 	)
+	
+	RenderingServer.set_default_clear_color(self.bg3_c)
 	
 	print("[Config_main] End: ", Time.get_ticks_msec())
 	

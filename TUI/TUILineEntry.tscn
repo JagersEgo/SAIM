@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://5hbl6cq31fm8"]
+
+[ext_resource type="Script" uid="uid://buj83guxh61sm" path="res://TUI/tui_line_entry.gd" id="1_dh2y6"]
+
+[node name="TuiLineEntry" type="Node2D" unique_id=1578415394]
+script = ExtResource("1_dh2y6")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=472242977]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 68.5
+offset_bottom = 31.0
+mouse_filter = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+virtual_keyboard_enabled = false
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]

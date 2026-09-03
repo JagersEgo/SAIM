@@ -12,7 +12,7 @@ closable = false
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_11gta")
-text = Array[String](["  󰆥 Simple Aim v0.2 ─────────── F1 help • F8 quit"])
+text = Array[String](["  󱢡 Simple Aim v0.2 ─────────── F1 help • F8 quit"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiComment2" type="Node2D" parent="." unique_id=1837668384]

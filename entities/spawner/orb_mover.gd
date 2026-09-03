@@ -17,16 +17,16 @@ var strafe_directions : Dictionary[EnemyTarget, int] = {}
 
 var alive_targets = 0
 
-func _ready() -> void:
-	for _i in range(target_limit):
-		spawn_target()
-	
-	for child in get_children():
-		var orb := child as EnemyTarget
-		
-		if !strafe_timings.has(orb) || strafe_timings[orb] <= 0:
-			strafe_timings[orb] = randf_range(STRAFE_TIME_MIN, STRAFE_TIME_MAX)
-			strafe_directions[orb] = randi_range(0,1) * 2 - 1
+#func _ready() -> void:
+	#for _i in range(target_limit):
+		#spawn_target()
+	#
+	#for child in get_children():
+		#var orb := child as EnemyTarget
+		#
+		#if !strafe_timings.has(orb) || strafe_timings[orb] <= 0:
+			#strafe_timings[orb] = randf_range(STRAFE_TIME_MIN, STRAFE_TIME_MAX)
+			#strafe_directions[orb] = randi_range(0,1) * 2 - 1
 
 func _process(_delta: float) -> void:
 	while alive_targets < target_limit:

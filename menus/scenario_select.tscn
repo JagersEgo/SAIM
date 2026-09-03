@@ -2,24 +2,60 @@
 
 [ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_2q086"]
 [ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_pshu2"]
-[ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="3_cs41s"]
+[ext_resource type="Script" uid="uid://cfuaxgi2gjd48" path="res://TUI/tui_picker.gd" id="3_r4vw6"]
+[ext_resource type="PackedScene" uid="uid://5hbl6cq31fm8" path="res://TUI/TUILineEntry.tscn" id="4_44j1e"]
+[ext_resource type="Script" uid="uid://mey3v3ivr2uw" path="res://TUI/tui_button.gd" id="4_r4vw6"]
 
 [sub_resource type="GDScript" id="GDScript_11gta"]
 script/source = "extends Node
+
+#TODO:
+# Needs optimisation, but fine for small file counts
+# Support more scenarios than window height
 
 const IN_GAME = preload(\"uid://cfiu5tli0l3el\")
 const SCENARIOS_FOLDER = \"scenarios\"
 const SCENARIO_MAIN_SCENE = \"main.tscn\"
 const SCENARIO_METADATA = \"_metadata.tres\"
 
+@onready var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
+var scenarios = []
+var files : Array[String] = []
+var file_md : Dictionary[String, Metadata]
+
+var file_buttons : Array[TuiNode] = []
+
+const width = 54
+
 func _ready() -> void:
-	var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
-	var files : Array[String] = []
+	_scan_directory(dir)
+	for f in files:
+		var md = load(dir.path_join(f).path_join(SCENARIO_METADATA)) as Metadata
+		file_md[f] = md
 	
-	_scan_directory(dir, files)
+	var filtered_files := _sort_files()
+	
+	_create_buttons(filtered_files)
+
+func _sort_files() -> Array[String]:
+	var filtered_files = files.duplicate()
+	
+	var search : String = %NameSearch.get_text().to_lower().strip_edges()
+	if search != \"\":
+		filtered_files = files.filter(func(f):
+			return (file_md[f].name).to_lower().contains(search) || \\
+				(file_md[f].author).to_lower().contains(search)
+			)
+	
+	filtered_files.sort_custom(get_sort_type())
+	
+	return filtered_files
+
+func _create_buttons(files_list : Array[String]):
+	get_parent().nodes.erase(%Back)
 	
 	var i := 0
-	for f in files:
+	for f in files_list:
 		i += 1
 		_make_button(f, i, dir.path_join(f))
 	
@@ -28,16 +64,44 @@ func _ready() -> void:
 	get_parent().nodes_were_updated.call_deferred()
 	get_parent().queue_redraw.call_deferred()
 
-func _scan_directory(path: String, files: Array[String]) -> void:
-	var dir := DirAccess.open(path)
-	if dir == null:
+func _destroy_buttons():
+	for i in file_buttons:
+		(get_parent().nodes as Array).erase(i)
+		i.queue_free()
+	
+	self.file_buttons = []
+
+func get_sort_type() -> Callable:
+	var sort : Callable = func(_a, _b): return false 
+	if %SortType.get_value() == \"Name\":
+		sort = func(a: String, b: String): 
+			return file_md[a].name < file_md[b].name
+	elif %SortType.get_value() == \"Type\":
+		sort = func(a: String, b: String): 
+			return file_md[a].type < file_md[b].type
+	elif %SortType.get_value() == \"Author\":
+		sort = func(a: String, b: String): 
+			return file_md[a].author < file_md[b].author
+	else:
+		push_error(\"Unknown sort type\")
+	
+	return sort
+
+func update_files(_sort_type : String):
+	_destroy_buttons()
+	var filtered_files := _sort_files()
+	_create_buttons(filtered_files)
+
+func _scan_directory(path: String) -> void:
+	var dirac := DirAccess.open(path)
+	if dirac == null:
 		push_error(\"Couldn't open directory: \" + path)
 		return
 
-	dir.list_dir_begin()
+	dirac.list_dir_begin()
 
 	while true:
-		var dir_name := dir.get_next()
+		var dir_name := dirac.get_next()
 		if dir_name == \"\":
 			break
 		if dir_name.begins_with(\".\") or dir_name.begins_with(\"_\"):
@@ -55,14 +119,18 @@ func _scan_directory(path: String, files: Array[String]) -> void:
 				continue
 		files.append(dir_name)
 		
-	dir.list_dir_end()
+	dirac.list_dir_end()
 
-func _make_button(_bname : String, index : int, path : String):
+func _make_button(file: String, index : int, path : String):
 	var new := TuiButton.new()
+	var md := file_md[file]
+
+	scenarios.append([md, path])
 	
-	var md = load(path.path_join(SCENARIO_METADATA)) as Metadata
-	
-	new.text = \"%s by %s [%s]\" % [md.name, md.author, md.type]
+	var left = \"\\\\b%s\\\\b \\\\iby %s\\\\i \" % [md.name, md.author]
+	var type_text = \"[%s]\" % md.type
+
+	new.text = left + \" \".repeat(max(1, width - left.length() - type_text.length())) + type_text
 	new.marker = str(index)
 	
 	new.pressed.connect(
@@ -78,28 +146,46 @@ func _make_button(_bname : String, index : int, path : String):
 	
 	get_parent().add_child.call_deferred(new)
 	get_parent().nodes.append(new)
-
+	file_buttons.append(new)
 
 func _on_back_pressed() -> void:
 	get_parent().kill_self()
+
+func _on_name_search_text_changed() -> void:
+	update_files(\"\")
 "
 
 [node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_2q086")
-nodes = [NodePath("TuiComment")]
+nodes = [NodePath("TuiComment"), NodePath("SortType"), NodePath("NameSearch")]
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_pshu2")
-text = Array[String](["Scenario Select", "-------"])
+text = Array[String](["                  \\bScenario Select\\b", "─────────"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
-[node name="Back" type="Node2D" parent="." unique_id=2031653426]
+[node name="SortType" type="Node2D" parent="." unique_id=987915778]
 unique_name_in_owner = true
-script = ExtResource("3_cs41s")
+script = ExtResource("3_r4vw6")
+options = Array[String](["Name", "Type", "Author"])
+prefix = "[~] | Sort by:"
+style = 1
+metadata/_custom_type_script = "uid://cfuaxgi2gjd48"
+
+[node name="NameSearch" parent="." unique_id=1578415394 instance=ExtResource("4_44j1e")]
+unique_name_in_owner = true
+prefix = "[~] | Search: "
+
+[node name="Back" type="Node2D" parent="." unique_id=608229629]
+unique_name_in_owner = true
+script = ExtResource("4_r4vw6")
 text = "Back"
-metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
+marker = "x"
+metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="Logic" type="Node" parent="." unique_id=633565085]
 script = SubResource("GDScript_11gta")
 
+[connection signal="changed" from="SortType" to="Logic" method="update_files"]
+[connection signal="text_changed" from="NameSearch" to="Logic" method="_on_name_search_text_changed"]
 [connection signal="pressed" from="Back" to="Logic" method="_on_back_pressed"]
