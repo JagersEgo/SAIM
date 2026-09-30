@@ -1,18 +1,29 @@
 [gd_scene format=3 uid="uid://eodvm4a5xyhr"]
 
 [ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_hc1il"]
+[ext_resource type="Script" uid="uid://c3yc3jjxbweq6" path="res://TUI/tui_centre_comment.gd" id="2_3sjs5"]
 [ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_jak2t"]
 [ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="2_wa7kt"]
+[ext_resource type="Script" uid="uid://bhth3fil4stwc" path="res://TUI/tui_line.gd" id="3_f8l6l"]
 [ext_resource type="Script" uid="uid://2lo465eqxn56" path="res://menus/actions.gd" id="4_45fwn"]
 
 [node name="Actions" type="Node2D" unique_id=108601775 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_hc1il")
-nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("FullscreenIndicator"), NodePath("TuiComment2"), NodePath("TuiButtonSimple3"), NodePath("MuteIndicator"), NodePath("TuiComment3"), NodePath("TuiButtonSimple2")]
+nodes = [NodePath("TuiCentreComment"), NodePath("TuiLine"), NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("FullscreenIndicator"), NodePath("TuiComment2"), NodePath("TuiButtonSimple3"), NodePath("MuteIndicator"), NodePath("TuiComment3"), NodePath("TuiButtonSimple2")]
 metadata/_custom_type_script = "uid://b4f4by0bwi4vw"
+
+[node name="TuiCentreComment" type="Node2D" parent="." unique_id=1114074143]
+script = ExtResource("2_3sjs5")
+text = Array[String](["Actions"])
+metadata/_custom_type_script = "uid://c3yc3jjxbweq6"
+
+[node name="TuiLine" type="Node2D" parent="." unique_id=1189356910]
+script = ExtResource("3_f8l6l")
+metadata/_custom_type_script = "uid://bhth3fil4stwc"
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=1805304072]
 script = ExtResource("2_jak2t")
-text = Array[String](["Actions", "-------"])
+text = Array[String](["\\\\lFor the the settings, see HELP on the main menu\\\\l", ""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiComment2" type="Node2D" parent="." unique_id=2012520149]
@@ -22,7 +33,7 @@ metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiButtonSimple" type="Node2D" parent="." unique_id=1041891265]
 script = ExtResource("2_wa7kt")
-text = "  Toggle Fullscreen State"
+text = "  Toggle Fullscreen"
 metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
 
 [node name="FullscreenIndicator" type="Node2D" parent="." unique_id=1776398113]
@@ -32,7 +43,7 @@ metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiButtonSimple3" type="Node2D" parent="." unique_id=487977953]
 script = ExtResource("2_wa7kt")
-text = "  Toggle mute"
+text = "  Toggle Mute"
 metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
 
 [node name="MuteIndicator" type="Node2D" parent="." unique_id=578692040]
@@ -48,7 +59,7 @@ metadata/_custom_type_script = "uid://bbtsdaj7l5ll0"
 
 [node name="TuiComment3" type="Node2D" parent="." unique_id=30325374]
 script = ExtResource("2_jak2t")
-text = Array[String](["", "", ""])
+text = Array[String]([""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="Buttons" type="Node" parent="." unique_id=70869131]

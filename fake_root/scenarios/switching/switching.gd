@@ -89,4 +89,11 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func query_config() -> Array[Dictionary]:
-	return SETTINGS
+	var result: Array[Dictionary] = []
+
+	for setting in SETTINGS:
+		var entry = setting.duplicate()
+		entry["value"] = get(setting["prop"])
+		result.append(entry)
+
+	return result

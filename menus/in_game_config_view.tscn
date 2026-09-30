@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://qrmpcqwblqrf"]
+
+[ext_resource type="Script" uid="uid://cni7ekle0o3y5" path="res://menus/in_game_config_view.gd" id="1_b76il"]
+[ext_resource type="PackedScene" uid="uid://dx3gp77rn3rqs" path="res://TUI/TUIConfigDisplay.tscn" id="2_5kvqo"]
+[ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_b76il"]
+[ext_resource type="Script" uid="uid://bb0l56cv0ogev" path="res://TUI/tui_centre_button.gd" id="3_b76il"]
+
+[node name="InGameConfigView" type="Node2D" unique_id=1112808869 node_paths=PackedStringArray("tui_config_display", "nodes")]
+script = ExtResource("1_b76il")
+tui_config_display = NodePath("TuiConfigDisplay")
+nodes = [NodePath("TuiComment"), NodePath("TuiConfigDisplay"), NodePath("TuiCentreButton")]
+metadata/_custom_type_script = "uid://b4f4by0bwi4vw"
+
+[node name="TuiComment" type="Node2D" parent="." unique_id=1132721667]
+script = ExtResource("2_b76il")
+text = Array[String](["                       Config"])
+metadata/_custom_type_script = "uid://bvp8ygionvc8p"
+
+[node name="TuiConfigDisplay" parent="." unique_id=1169410865 instance=ExtResource("2_5kvqo")]
+
+[node name="TuiCentreButton" type="Node2D" parent="." unique_id=379710557]
+script = ExtResource("3_b76il")
+text = "Back"
+metadata/_custom_type_script = "uid://bb0l56cv0ogev"
+
+[connection signal="pressed" from="TuiCentreButton" to="." method="_on_tui_centre_button_pressed"]

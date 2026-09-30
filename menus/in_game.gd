@@ -1,5 +1,8 @@
 extends Node2D
 
+const IN_GAME_CONFIG_VIEW = preload("res://menus/in_game_config_view.tscn")
+@onready var tui_scene: TuiScene = $TuiScene
+
 @export var pause_menu : Node
 @export var game_scene : Node3D
 
@@ -7,9 +10,6 @@ var paused := false
 
 func _ready() -> void:
 	pause()
-	
-	print("FIX TEMP CONFIG DISPLAY")
-	$TuiScene/TuiConfigDisplay.parse(game_scene.query_config())
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_close_dialog"):
@@ -52,3 +52,10 @@ func _on_tui_button_6_pressed() -> void:
 
 func _on_tui_centre_button_4_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_tui_centre_button_3_pressed() -> void:
+	var new := IN_GAME_CONFIG_VIEW.instantiate()
+	new.parse.call_deferred(game_scene.query_config())
+	
+	tui_scene.adopt(new)

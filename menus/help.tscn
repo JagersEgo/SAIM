@@ -1,17 +1,28 @@
 [gd_scene format=3 uid="uid://bmyaay77hyo5b"]
 
 [ext_resource type="Script" uid="uid://b4f4by0bwi4vw" path="res://TUI/tui_scene.gd" id="1_elph6"]
+[ext_resource type="Script" uid="uid://c3yc3jjxbweq6" path="res://TUI/tui_centre_comment.gd" id="2_56jd1"]
 [ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_wvy5h"]
+[ext_resource type="Script" uid="uid://bhth3fil4stwc" path="res://TUI/tui_line.gd" id="3_1coos"]
 [ext_resource type="Script" uid="uid://bbtsdaj7l5ll0" path="res://TUI/tui_button_simple.gd" id="3_wvy5h"]
 [ext_resource type="Script" uid="uid://bb3wxl0x2ni1p" path="res://menus/help.gd" id="4_wvy5h"]
 
 [node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_elph6")
-nodes = [NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("TuiButtonSimple2")]
+nodes = [NodePath("TuiCentreComment"), NodePath("TuiLine"), NodePath("TuiComment"), NodePath("TuiButtonSimple"), NodePath("TuiButtonSimple2")]
+
+[node name="TuiCentreComment" type="Node2D" parent="." unique_id=1109993801]
+script = ExtResource("2_56jd1")
+text = Array[String](["\\\\bHelp\\\\b"])
+metadata/_custom_type_script = "uid://c3yc3jjxbweq6"
+
+[node name="TuiLine" type="Node2D" parent="." unique_id=738094176]
+script = ExtResource("3_1coos")
+metadata/_custom_type_script = "uid://bhth3fil4stwc"
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_wvy5h")
-text = Array[String](["Help", "----", "  Navigate with (default) WASD, select with space.", "", "  All configuration is through .ini files next to", "  the binary.", "", "  F8 can be used anywhere to quick-exit.", ""])
+text = Array[String](["  Control menus with \\\\bWASD\\\\b, select with \\\\bspace\\\\b.", "\\\\l  As the default keybindings\\\\l", "", "  There is no settings menu. All configuration is", "  through \\\\b.ini\\\\b files next to the executable.", "  See the github page for more info.", ""])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="TuiButtonSimple" type="Node2D" parent="." unique_id=515270821]
