@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://bvp8ygionvc8p" path="res://TUI/tui_comment.gd" id="2_11gta"]
 [ext_resource type="Script" uid="uid://mey3v3ivr2uw" path="res://TUI/tui_button.gd" id="3_cxdly"]
 [ext_resource type="Script" uid="uid://xig10aqydgx" path="res://menus/main_menu.gd" id="4_11gta"]
+[ext_resource type="Script" uid="uid://c3yc3jjxbweq6" path="res://TUI/tui_centre_comment.gd" id="4_oblsv"]
 
 [node name="TuiScene" type="Node2D" unique_id=277248460 node_paths=PackedStringArray("nodes")]
 script = ExtResource("1_at0u2")
-nodes = [NodePath("TuiComment"), NodePath("TuiComment2"), NodePath("TuiButton"), NodePath("TuiButton2"), NodePath("TuiButton3"), NodePath("TuiButton4")]
+nodes = [NodePath("TuiComment"), NodePath("TuiComment2"), NodePath("TuiButton"), NodePath("TuiButton2"), NodePath("TuiButton3"), NodePath("TuiButton4"), NodePath("TuiCentreComment")]
 closable = false
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
@@ -43,6 +44,11 @@ script = ExtResource("3_cxdly")
 text = "Quit"
 marker = "4"
 metadata/_custom_type_script = "uid://mey3v3ivr2uw"
+
+[node name="TuiCentreComment" type="Node2D" parent="." unique_id=1332149765]
+script = ExtResource("4_oblsv")
+text = Array[String](["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "\\\\l      Thank you for trying out SAIM! -Jager \\\\l"])
+metadata/_custom_type_script = "uid://c3yc3jjxbweq6"
 
 [node name="Buttons" type="Node" parent="." unique_id=974570165 node_paths=PackedStringArray("tui_scene")]
 script = ExtResource("4_11gta")
