@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cvs0otx3fux17"]
+
+[ext_resource type="Script" uid="uid://c3yc3jjxbweq6" path="res://TUI/tui_centre_comment.gd" id="1_enoic"]
+
+[node name="TuiCentreComment" type="Node2D" unique_id=1169410865]
+script = ExtResource("1_enoic")

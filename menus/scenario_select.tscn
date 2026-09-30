@@ -13,12 +13,15 @@ script/source = "extends Node
 # Needs optimisation, but fine for small file counts
 # Support more scenarios than window height
 
+@onready var tui_scene: TuiScene = $\"..\"
+@onready var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
+
 const IN_GAME = preload(\"uid://cfiu5tli0l3el\")
 const SCENARIOS_FOLDER = \"scenarios\"
 const SCENARIO_MAIN_SCENE = \"main.tscn\"
 const SCENARIO_METADATA = \"_metadata.tres\"
+const OTHER_NODES_HEIGHT := 4
 
-@onready var dir := ConfigManager.get_game_root().path_join(SCENARIOS_FOLDER)
 var scenarios = []
 var files : Array[String] = []
 var file_md : Dictionary[String, Metadata]
@@ -35,7 +38,10 @@ func _ready() -> void:
 	
 	var filtered_files := _sort_files()
 	
-	_create_buttons(filtered_files)
+	var _count := _create_buttons(filtered_files)
+	
+	#tui_scene.update_height(count + OTHER_NODES_HEIGHT)
+	print(tui_scene.height)
 
 func _sort_files() -> Array[String]:
 	var filtered_files = files.duplicate()
@@ -51,7 +57,7 @@ func _sort_files() -> Array[String]:
 	
 	return filtered_files
 
-func _create_buttons(files_list : Array[String]):
+func _create_buttons(files_list : Array[String]) -> int:
 	get_parent().nodes.erase(%Back)
 	
 	var i := 0
@@ -63,6 +69,8 @@ func _create_buttons(files_list : Array[String]):
 	
 	get_parent().nodes_were_updated.call_deferred()
 	get_parent().queue_redraw.call_deferred()
+	
+	return i
 
 func _destroy_buttons():
 	for i in file_buttons:
@@ -161,7 +169,7 @@ nodes = [NodePath("TuiComment"), NodePath("SortType"), NodePath("NameSearch")]
 
 [node name="TuiComment" type="Node2D" parent="." unique_id=410913873]
 script = ExtResource("2_pshu2")
-text = Array[String](["                  \\bScenario Select\\b", "─────────"])
+text = Array[String](["                  \\bScenario Select\\b", "────────────────────────────────────────────────────"])
 metadata/_custom_type_script = "uid://bvp8ygionvc8p"
 
 [node name="SortType" type="Node2D" parent="." unique_id=987915778]

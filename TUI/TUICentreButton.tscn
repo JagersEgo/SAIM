@@ -4,4 +4,3 @@
 
 [node name="TuiCentreButton" type="Node2D" unique_id=1169410865]
 script = ExtResource("1_7ett1")
-text = "Button!"

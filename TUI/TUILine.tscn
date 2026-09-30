@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfuxec830he7g"]
+
+[ext_resource type="Script" uid="uid://bhth3fil4stwc" path="res://TUI/tui_line.gd" id="1_xen72"]
+
+[node name="TuiLine" type="Node2D" unique_id=1169410865]
+script = ExtResource("1_xen72")

@@ -3,11 +3,14 @@ class_name TuiConfigDisplay
 
 var text : Array[String]
 
+const TYPE_LEN := 5
+const TOP_LINE := "\\i[CATEGORY] <TYPE> KEY = VALUE (DEFAULT)\\i"
+
 func _ready() -> void:
 	interactable = false
 
 func parse(entries) -> void:
-	var lines: Array[String] = []
+	var lines: Array[String] = [TOP_LINE]
 
 	var max_key_len := 0
 	for entry in entries:
@@ -17,10 +20,11 @@ func parse(entries) -> void:
 
 	for entry in entries:
 		lines.append(
-			"[%s] %s %s default: %s" % [
+			"[%s] <%s> %s = %s (%s)" % [
 				entry.get("section", ""),
-				"<" + entry.get("type", "").rpad(5) + ">",
+				entry.get("type", "").rpad(TYPE_LEN),
 				entry.get("key", "").rpad(max_key_len+1),
+				str(entry.get("value", "")),
 				str(entry.get("default", ""))
 			]
 		)

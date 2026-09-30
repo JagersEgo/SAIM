@@ -16,6 +16,10 @@ const s_caret = "|"
 func _ready() -> void:
 	interactable = true
 
+func _physics_process(_delta: float) -> void:
+	if line_edit.is_editing():
+		get_parent().queue_redraw()
+
 func body(_selected: bool) -> Array[String]:
 	var text := line_edit.text
 	if !line_edit.is_editing(): return [prefix + text]

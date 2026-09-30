@@ -4,7 +4,7 @@ class_name TuiScene
 @onready var viewport = get_viewport()
 
 @export var width := 256 #52 characters
-@export var height := 112
+@export var height := 112 #112 px
 @export var container : TUIContainer
 @export var nodes : Array[TuiNode] 
 @export var closable : bool = true
@@ -31,6 +31,8 @@ var pointer = 0
 var no_draw : bool = false
 
 func _ready() -> void:
+	#self.update_height(height)
+	
 	for n: TuiNode in nodes:
 		if n.interactable:
 			selectable += 1
@@ -212,3 +214,15 @@ func nodes_were_updated():
 	selectable = 0
 	selectable_nodes = []
 	self._ready()
+
+func update_height(lines: int):
+	self.height = ((lines * Config.default_font_size * 1.2) + 15) / 2
+	
+	start_font_draw = Vector2i(
+		-width + Config.default_font_size*0.5 - 2, 
+		-height + Config.default_font_size + 4
+	)
+
+	RECT = Rect2(Vector2(-width, -height), Vector2(width * 2, height * 2))
+	
+	self.queue_redraw()
