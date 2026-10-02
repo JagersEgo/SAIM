@@ -17,6 +17,8 @@ SAIM (**S**imple **Aim**) is an intentionally minimal aim trainer built around a
 - Portable binary
 - Linux as first-class platform
 
+_Currently in a beta release state_
+
 ## Why?
 
 I was never happy with any of the options for aim trainers right now, most are heavy, slow, and move away from the idea of simply training your aim. That's why I wanted to make one that was just simple, clean and fast
