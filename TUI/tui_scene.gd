@@ -112,7 +112,7 @@ func _draw() -> void:
 						# Skip over escaped character
 						line_idx += 2
 					else:
-						push_error("Unrecognised escape in: ", line, character)
+						push_error("Unrecognised escape in: `" + line + "`: ", character)
 						line_idx += 1
 						
 					continue

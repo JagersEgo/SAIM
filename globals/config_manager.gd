@@ -142,6 +142,8 @@ func _decode(type: String, value: Variant, fallback: Variant) -> Variant:
 		"float":
 			if value is float:
 				return value
+			elif value is int:
+				return float(value)
 
 			push_warning("Invalid float, using default.", value)
 			push_notification(NotificationTypes.WARN, "Decoder", "Invalid float, using default. " + str(value))

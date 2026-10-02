@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://mey3v3ivr2uw"
 
 [node name="TuiCentreComment" type="Node2D" parent="." unique_id=1332149765]
 script = ExtResource("4_oblsv")
-text = Array[String](["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "\\\\l      Thank you for trying out SAIM! -Jager \\\\l"])
+text = Array[String](["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "\\l      Thank you for trying out SAIM! -Jager  \\l"])
 metadata/_custom_type_script = "uid://c3yc3jjxbweq6"
 
 [node name="Buttons" type="Node" parent="." unique_id=974570165 node_paths=PackedStringArray("tui_scene")]
