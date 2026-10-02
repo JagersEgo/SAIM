@@ -1,3 +1,5 @@
+Exporting is a but different to a standard godot project, mainly due to the need to load from the scenarios folder on the fly.
+
 To export this project there are several steps:
 
 1. Use the Godot exporter excluding:
