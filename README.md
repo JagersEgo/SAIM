@@ -76,6 +76,8 @@ Included is an example one `sensitivity_randomiser` which is an sample implement
 ## Plans for the future:
 
 - [x] Being able to support custom scenarios through drag and drop
+- [ ] Add a timer/challenge mode to scenario play, as well as scoring
+- [ ] Add in score history and graph plotting
 - [ ] Fully customisable everything
 	+ Working on hit sounds, target/arena rendering etc.
 - [ ] Better Wayland support on Linux
