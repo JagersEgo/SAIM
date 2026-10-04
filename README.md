@@ -75,11 +75,10 @@ Included is an example one `sensitivity_randomiser` which is an sample implement
 
 ## Plans for the future:
 
-- Being able to support custom scenarios through drag and drop
-	+ Through the engine, relatively straightforward, just needs a bit of time
-- Fully customisable everything
+- [x] Being able to support custom scenarios through drag and drop
+- [ ] Fully customisable everything
 	+ Working on hit sounds, target/arena rendering etc.
-- Better Wayland support on Linux
+- [ ] Better Wayland support on Linux
 	+ Seems currently to be an issue with Godot's wayland implementation (?) especially with high polling rate mice which seem to drop inputs
  
 **Feel free to message me anything on discord! @`.gov.au`**
