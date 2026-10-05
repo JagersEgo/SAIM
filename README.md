@@ -49,7 +49,7 @@ Settings are all changed with ordinary text editors of the `.ini` files stored n
 
 Startup time, frame timing, and latency, are high priorities for me so you can run SAIM with other games running, so far on my (average) system I measure >1 second startup, 2000 fps with steady frame times
 
-The goal of this isn't really for 2000 fps standalone, although that is a plus. It's mainly so it can live while another game is hogging CPU and GPU resources while remaining playable
+The goal of this isn't really for 2000 fps standalone, although that is a plus. It's designed so it can live while another game is hogging CPU and GPU resources while remaining playable, although this change more with your selected scheduler/OS
 
 ### All config through `.ini` files
 
@@ -57,7 +57,7 @@ I always hated running through settings menus, so all config is done in `.ini` f
 
 #### Config explained
 
-The config files are:
+The current config files are:
 
 `config.ini` - The core game configuration
 
@@ -69,7 +69,11 @@ The config files are:
 
 ### Plugins system
 
-The core is intentionally minimal, so more can be added onto it. Plugins currently are GDScript files, which are able to add any functionality Godot engine supports. 
+The core is intentionally minimal, so more can be added onto it. Plugins designed around running native GDScript files, which are able to add any functionality Godot engine supports.
+
+The system is intentionally designed **without sandboxing**, all extensions are unsafe, both for flexibility and freedom altough it comes at the cost of no protection (all extensions have the same permission of the engine itself). But all plugins are _expected_ to be in plain text for easy auditing (and editing) through the plugin loader's implementatio.
+
+> All extensions are intended to be reviewed or received by a trustworthy source before use.
 
 Included is an example one `sensitivity_randomiser` which is an sample implementation of an intentionally hacky sensitivity randomiser
 
